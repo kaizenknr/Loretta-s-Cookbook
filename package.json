@@ -1,0 +1,14 @@
+{
+  "name": "lorettas-cookbook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Loretta's Cookbook PWA — static site plus Vercel serverless functions for recipe-drop and cooking-timer push notifications.",
+  "scripts": {
+    "generate-vapid": "node scripts/generate-vapid.js",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "web-push": "^3.6.7"
+  }
+}

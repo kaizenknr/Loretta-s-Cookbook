@@ -369,6 +369,41 @@
   .view{ display:none }
   .view.active{ display:block; animation:fade .18s ease }
   @keyframes fade{ from{ opacity:0 } to{ opacity:1 } }
+
+  /* ---------- Coming soon (scheduled drops) ---------- */
+  .soon-wrap{ padding:0 20px; }
+  .soon-head{
+    display:flex; align-items:center; gap:8px; margin:8px 2px 12px;
+    font-family:var(--serif); font-weight:700; font-size:19px; color:var(--ink);
+  }
+  .soon-head .spark{ color:var(--accent); }
+  .card.locked{ cursor:default; opacity:1; }
+  .card.locked .thumb{ position:relative; filter:blur(5px) saturate(.7); }
+  .card.locked .thumb::after{
+    content:"🔒"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:30px; filter:none; -webkit-text-stroke:0;
+  }
+  .card.locked .body h3{ color:var(--ink-soft); }
+  .drop-when{
+    display:inline-block; margin-top:2px; font-size:12px; font-weight:700; letter-spacing:.2px;
+    color:var(--accent-deep); background:var(--accent-soft); border-radius:999px; padding:3px 9px;
+  }
+  .teaser{ margin:7px 0 0; font-family:var(--serif); font-style:italic; font-size:13.5px; color:var(--ink-soft); line-height:1.35; }
+
+  /* ---------- Notify (recipe-drop push) ---------- */
+  .notify-cta{
+    display:none; margin:2px 20px 4px; padding:12px 14px; align-items:center; gap:11px;
+    background:var(--blue-soft); border:1.5px solid var(--blue-trim); border-radius:14px;
+  }
+  .notify-cta.show{ display:flex; }
+  .notify-cta .bell{ font-size:20px; line-height:1; }
+  .notify-cta .txt{ flex:1; font-size:13.5px; color:var(--blue-ink); }
+  .notify-cta .txt b{ display:block; font-size:14.5px; }
+  .notify-cta button{
+    background:var(--blue-solid); color:#fff; font-weight:700; font-size:13.5px;
+    border-radius:999px; padding:8px 14px; white-space:nowrap;
+  }
+  .notify-cta button.ghost{ background:transparent; color:var(--blue-ink); padding:8px 6px; }
 </style>
 </head>
 <body>
@@ -387,6 +422,16 @@
       <input id="search" type="search" placeholder="Search recipes or ingredients" autocomplete="off" />
     </div>
     <div class="chips" id="chips"></div>
+    <div class="notify-cta" id="notify-cta">
+      <span class="bell">🔔</span>
+      <span class="txt"><b>Get a ping for new recipes</b>Loretta will drop a new one now and then.</span>
+      <button onclick="enablePush()">Turn on</button>
+      <button class="ghost" onclick="dismissNotifyCta()">Not now</button>
+    </div>
+    <div class="soon-wrap" id="soon" style="display:none">
+      <div class="soon-head"><span class="spark">✨</span> Coming soon</div>
+      <div class="grid" id="soon-grid"></div>
+    </div>
     <div class="grid" id="grid"></div>
     <div class="home-foot">Made for Mom &#9829;</div>
   </div>
@@ -491,22 +536,47 @@ function renderChips(){
 }
 function setCat(c){ activeCat = c; renderChips(); renderGrid(); }
 
+/* A recipe is "available" once its availableAt time has passed (or it has none). */
+function isAvailable(r){
+  if(!r || !r.availableAt) return true;
+  const t = Date.parse(r.availableAt);
+  return isNaN(t) ? true : t <= Date.now();
+}
+function fmtDrop(iso){
+  const t = Date.parse(iso);
+  if(isNaN(t)) return 'soon';
+  const d = new Date(t), now = new Date();
+  const sameYear = d.getFullYear()===now.getFullYear();
+  const day = d.toLocaleDateString(undefined, sameYear
+    ? {weekday:'short', month:'short', day:'numeric'}
+    : {month:'short', day:'numeric', year:'numeric'});
+  const time = d.toLocaleTimeString(undefined, {hour:'numeric', minute:'2-digit'});
+  return day + ' · ' + time;
+}
+
 function renderGrid(){
   const q = ($('#search').value || '').trim().toLowerCase();
   const grid = $('#grid');
+  const match = r =>
+    r.title.toLowerCase().includes(q) ||
+    (r.description||'').toLowerCase().includes(q) ||
+    (r.ingredients||[]).join(' ').toLowerCase().includes(q);
+
   let list = RECIPES.filter(r => activeCat==='All' || r.category===activeCat);
-  if(q){
-    list = list.filter(r =>
-      r.title.toLowerCase().includes(q) ||
-      (r.description||'').toLowerCase().includes(q) ||
-      (r.ingredients||[]).join(' ').toLowerCase().includes(q)
-    );
-  }
-  if(!list.length){
-    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">No recipes found.<br/>Try another search.</div>`;
+  if(q) list = list.filter(match);
+
+  const upcoming = list.filter(r => !isAvailable(r))
+    .sort((a,b)=> Date.parse(a.availableAt) - Date.parse(b.availableAt));
+  const ready = list.filter(isAvailable);
+
+  renderSoon(upcoming);
+
+  if(!ready.length){
+    grid.innerHTML = upcoming.length ? '' :
+      `<div class="empty" style="grid-column:1/-1">No recipes found.<br/>Try another search.</div>`;
     return;
   }
-  grid.innerHTML = list.map(r => `
+  grid.innerHTML = ready.map(r => `
     <button class="card" onclick="openRecipe('${r.id}')">
       <div class="thumb">${r.image ? `<img src="${r.image}" alt="">` : (r.emoji||'🍽️')}</div>
       <div class="body">
@@ -520,11 +590,29 @@ function renderGrid(){
   `).join('');
 }
 
+/* Locked "teaser" cards for recipes whose availableAt is still in the future. */
+function renderSoon(upcoming){
+  const wrap = $('#soon'), sgrid = $('#soon-grid');
+  if(!wrap || !sgrid) return;
+  if(!upcoming.length){ wrap.style.display='none'; sgrid.innerHTML=''; return; }
+  wrap.style.display='block';
+  sgrid.innerHTML = upcoming.map(r => `
+    <div class="card locked">
+      <div class="thumb">${r.emoji||'🍽️'}</div>
+      <div class="body">
+        <h3>${esc(r.title)}</h3>
+        <span class="drop-when">Coming ${esc(fmtDrop(r.availableAt))}</span>
+        ${r.teaser?`<p class="teaser">${esc(r.teaser)}</p>`:''}
+      </div>
+    </div>
+  `).join('');
+}
+
 /* ---- recipe view ---- */
 let currentRecipe = null;
 function openRecipe(id){
   const r = RECIPES.find(x => x.id===id);
-  if(!r) return;
+  if(!r || !isAvailable(r)) return;   // locked drops aren't openable yet
   location.hash = '#/r/'+id;
 }
 function goHome(){ location.hash = ''; }
@@ -630,11 +718,13 @@ function startStepTimer(i){
   const key = r.id+':'+i;
   if(timers.find(t=>t.key===key)) return; // already running
   const total = s.timer*60;
-  timers.push({
+  const t = {
     key, stepIdx:i, recipeId:r.id,
     label:(s.timerLabel||r.title), sub:r.title,
     total, remaining:total, endAt:Date.now()+total*1000, paused:false, done:false
-  });
+  };
+  timers.push(t);
+  scheduleBackgroundTimer(t);   // best-effort push so the alert lands even if backgrounded
   startTicker(); renderTray(); refreshTimerButtons(); saveTimers(); if(cookOpen) syncCookTimer();
 }
 function startTicker(){ if(!ticker) ticker = setInterval(tick, 250); manageWake(); }
@@ -651,14 +741,24 @@ function tick(){
 }
 function pauseTimer(key){
   const t = timers.find(x=>x.key===key); if(!t||t.done) return;
-  if(t.paused){ t.paused=false; t.endAt=Date.now()+t.remaining*1000; }
-  else { t.paused=true; t.remaining=Math.max(0,Math.round((t.endAt-Date.now())/1000)); }
+  if(t.paused){ t.paused=false; t.endAt=Date.now()+t.remaining*1000; scheduleBackgroundTimer(t); }
+  else { t.paused=true; t.remaining=Math.max(0,Math.round((t.endAt-Date.now())/1000)); cancelBackgroundTimer(t.key); }
   renderTray(); saveTimers(); if(cookOpen) syncCookTimer();
 }
 function dismissTimer(key){
   timers = timers.filter(x=>x.key!==key);
+  cancelBackgroundTimer(key);   // don't let a stale push fire after it's dismissed
   if(!timers.length && ticker){ clearInterval(ticker); ticker=null; }
   renderTray(); refreshTimerButtons(); manageWake(); saveTimers(); if(cookOpen) syncCookTimer();
+}
+async function cancelBackgroundTimer(id){
+  try{
+    if(!VAPID_KEY) return;
+    await fetch('/api/schedule-timer', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ id, cancel:true })
+    });
+  }catch(e){}
 }
 /* ---- timers survive closing/reopening the app (uses phone storage) ---- */
 function saveTimers(){
@@ -699,6 +799,107 @@ function notify(t){
         catch(e){ try{ new Notification(title,{body}); }catch(_){} }
       });
     } else { new Notification(title,{body}); }
+  }catch(e){}
+}
+
+/* =====================================================================
+   WEB PUSH — background alerts for recipe drops + cooking timers.
+   Needs the /api endpoints + VAPID keys from HANDOFF.md §6c. Everything
+   here degrades gracefully: if the server/keys aren't configured, the
+   app just runs as before (no push, no errors shown to Mom).
+   ===================================================================== */
+let VAPID_KEY = null, VAPID_CHECKED = false;
+async function getVapidKey(){
+  if(VAPID_CHECKED) return VAPID_KEY;
+  VAPID_CHECKED = true;
+  try{
+    const res = await fetch('/api/vapid-public-key', {cache:'no-store'});
+    if(res.ok){ const j = await res.json(); VAPID_KEY = j.key || null; }
+  }catch(e){ VAPID_KEY = null; }
+  return VAPID_KEY;
+}
+function urlB64ToUint8(base64){
+  const pad = '='.repeat((4 - base64.length % 4) % 4);
+  const s = (base64 + pad).replace(/-/g,'+').replace(/_/g,'/');
+  const raw = atob(s), out = new Uint8Array(raw.length);
+  for(let i=0;i<raw.length;i++) out[i]=raw.charCodeAt(i);
+  return out;
+}
+function pushSupported(){
+  return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+}
+async function getPushSub(){
+  if(!pushSupported()) return null;
+  try{
+    const reg = await navigator.serviceWorker.ready;
+    return await reg.pushManager.getSubscription();
+  }catch(e){ return null; }
+}
+/* Subscribe this device and register it with the server. Returns the sub or null. */
+async function subscribeForPush(){
+  if(!pushSupported()) return null;
+  const key = await getVapidKey();
+  if(!key) return null;                       // server not configured — skip silently
+  try{
+    const reg = await navigator.serviceWorker.ready;
+    let sub = await reg.pushManager.getSubscription();
+    if(!sub){
+      sub = await reg.pushManager.subscribe({
+        userVisibleOnly:true,
+        applicationServerKey: urlB64ToUint8(key)
+      });
+    }
+    await fetch('/api/subscribe', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(sub)
+    });
+    return sub;
+  }catch(e){ return null; }
+}
+/* Called from the "Turn on" button. Asks permission, then subscribes. */
+async function enablePush(){
+  hideNotifyCta();
+  try{
+    if(Notification.permission==='default'){
+      const p = await Notification.requestPermission();
+      if(p!=='granted'){ localStorage.setItem('lc:notify-cta','dismissed'); return; }
+    }
+    if(Notification.permission!=='granted'){ localStorage.setItem('lc:notify-cta','dismissed'); return; }
+    const sub = await subscribeForPush();
+    if(sub) localStorage.setItem('lc:notify-cta','enabled');
+  }catch(e){}
+}
+function hideNotifyCta(){ const el=$('#notify-cta'); if(el) el.classList.remove('show'); }
+function dismissNotifyCta(){ localStorage.setItem('lc:notify-cta','dismissed'); hideNotifyCta(); }
+/* Show the opt-in banner only when push can actually work and Mom hasn't chosen yet. */
+async function maybeShowNotifyCta(){
+  const el = $('#notify-cta'); if(!el) return;
+  if(localStorage.getItem('lc:notify-cta')) return;          // already enabled/dismissed
+  if(!pushSupported()) return;
+  if(Notification.permission==='denied') return;
+  if(!isStandalone() && /iphone|ipad|ipod/i.test(navigator.userAgent)) return; // iOS push needs A2HS
+  const key = await getVapidKey();
+  if(!key) return;                                            // server not set up
+  if(Notification.permission==='granted'){
+    await subscribeForPush();                                 // already allowed → just (re)register
+    return;
+  }
+  setTimeout(()=> el.classList.add('show'), 1600);
+}
+/* Ask the server to fire a push when a cooking timer ends, so Mom gets the
+   ping even if she's left the app (iOS suspends in-page timers). Best effort. */
+async function scheduleBackgroundTimer(t){
+  try{
+    if(Notification.permission!=='granted') return;
+    const sub = await getPushSub();
+    if(!sub || !VAPID_KEY) return;
+    await fetch('/api/schedule-timer', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        id: t.key, fireAt: t.endAt, label: t.label, sub: t.sub,
+        endpoint: sub.endpoint
+      })
+    });
   }catch(e){}
 }
 
@@ -900,7 +1101,7 @@ function route(){
   const m = h.match(/^#\/r\/(.+)$/);
   if(m){
     const r = RECIPES.find(x=>x.id===decodeURIComponent(m[1]));
-    if(r){
+    if(r && isAvailable(r)){
       renderRecipe(r);
       $('#view-home').classList.remove('active');
       $('#view-recipe').classList.add('active');
@@ -956,8 +1157,29 @@ cookInit();
 restoreTimers();
 loadRecipes();
 maybeShowA2HS();
+
+/* ---- scheduled drops: unlock automatically when their time arrives ---- */
+let lastDropCheck = Date.now();
+function unlockCheck(){
+  // only matters on the home view and only if something is actually pending
+  if(currentRecipe) return;
+  if(RECIPES.some(r => !isAvailable(r))) renderGrid();
+  lastDropCheck = Date.now();
+}
+setInterval(unlockCheck, 30000);
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState==='visible'){
+    // catch up after the app was backgrounded (timers are throttled/suspended)
+    if(Date.now()-lastDropCheck > 20000) unlockCheck();
+  }
+});
+
 if('serviceWorker' in navigator){
-  window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); });
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js')
+      .then(()=> maybeShowNotifyCta())
+      .catch(()=>{});
+  });
 }
 </script>
 </body>

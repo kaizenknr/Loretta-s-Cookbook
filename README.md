@@ -43,6 +43,17 @@ commit, and redeploy. Each recipe:
 - `steps[].uses` → which ingredient indices that step uses, so they **cross off** as the
   cook advances. (Or just send Claude the recipe photos and it fills all of this in.)
 
+### Scheduling a "drop"
+Add two optional fields to any recipe to make it appear as a locked **teaser** until
+its time arrives, then unlock automatically:
+```jsonc
+"availableAt": "2026-07-25T18:00:00-07:00",   // ISO time; omit/null = available now
+"teaser": "Something chocolatey is coming Friday…"
+```
+Until `availableAt`, the app shows it under **Coming soon** with a blurred icon and the
+teaser (not openable). When the time passes it turns into a normal recipe card — and, if
+push is set up (below), Mom gets a notification.
+
 ## Features
 - 📖 All 49 recipes, faithfully transcribed from the handwritten book
 - 👩‍🍳 **Cooking Mode** — full-screen, one big step at a time (swipe/tap), giant per-step
@@ -51,10 +62,30 @@ commit, and redeploy. Each recipe:
 - ⏱️ Timers with alarm + buzz; **progress and running timers persist** on the phone
 - 🔍 Search + category filters (Bread, Vegetable, Dessert, Main Dish, …)
 - 📴 Works fully offline once added to the Home Screen; 🌙 light + dark
+- ✨ **Scheduled drops** — new recipes appear as locked teasers and unlock at their `availableAt`
+- 🔔 **Push notifications** (optional server) — a ping when a recipe drops, and when a cooking
+  timer finishes even if Mom has left the app
 
 ## Files
 `index.html` (app) · `recipes.json` (data) · `manifest.json` + `sw.js` (PWA) ·
-`icon*.png` (icons) · **`HANDOFF.md`** (next steps: the admin app + drop/notification system).
+`icon*.png` (icons) · `api/` + `vercel.json` (push notification server) ·
+`scripts/generate-vapid.js` (key setup) · **`HANDOFF.md`** (full architecture notes).
+
+## Notifications (optional — the whole app works without this)
+The static site runs on its own. To also alert Mom about drops and background timers you
+add three env vars and a KV store on Vercel; without them the app silently skips push.
+
+1. `npm install`
+2. `npm run generate-vapid` → paste `VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY` / `VAPID_SUBJECT`
+   into **Vercel → Project → Settings → Environment Variables** (see `.env.example`).
+3. In the Vercel dashboard, create a **KV** store and **Connect** it to the project
+   (injects `KV_REST_API_URL` / `KV_REST_API_TOKEN`).
+4. Redeploy. `vercel.json` runs `/api/cron` every minute to deliver drops + due timers.
+5. On the iPhone the app must be **Added to Home Screen** (iOS requirement for web push);
+   open it and tap **Turn on** when the notification banner appears.
+
+> iOS can't fire a scheduled/background notification from a web app without this push server —
+> that's why the timer-finished and drop alerts route through `/api`. Details in **HANDOFF.md §6**.
 
 ## What's next
 See **HANDOFF.md** — the local admin app that schedules recipe "drops" with teasers, and

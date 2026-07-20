@@ -1208,6 +1208,7 @@ function exitCook(){
   $('#cookmode').classList.remove('open');
   if(currentRecipe) renderRecipe(currentRecipe);  // sync checked-off steps back to the recipe page
   manageWake();
+  doReloadIfIdle();   // apply a pending app update now that cooking is done
 }
 function cookBack(){ if(cookIdx>0){ cookIdx--; renderCook(); } }
 function cookAdvance(){
@@ -1309,7 +1310,14 @@ function manageWake(){
   if(shouldHold) requestWake();
   else if(wakeLock){ wakeLock.release().catch(()=>{}); wakeLock=null; }
 }
-document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') manageWake(); });
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState==='visible'){
+    manageWake();
+    // Catch up: if a timer finished while the app was backgrounded (JS is
+    // suspended then), tick() now marks it done and fires the alert.
+    if(timers.some(t=>!t.done && !t.paused)){ if(!ticker) startTicker(); tick(); }
+  }
+});
 
 /* ---- routing ---- */
 function route(){
@@ -1423,8 +1431,40 @@ document.addEventListener('visibilitychange', ()=>{
   }
 });
 
+/* ---- always run the latest version ----
+   Registers the service worker so the SCRIPT itself is never served from the
+   HTTP cache (updateViaCache:'none'), checks for a new version on every launch
+   and whenever the app is refocused, and — when a new one is ready — activates
+   it and reloads once, so the Home Screen shortcut never gets stuck on an old
+   build. Reload is deferred if she's mid-cook so it isn't disruptive. */
+let pendingReload = false;
+function doReloadIfIdle(){ if(pendingReload && !cookOpen){ pendingReload=false; location.reload(); } }
 if('serviceWorker' in navigator){
-  window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); });
+  let reloading = false;
+  const hadController = !!navigator.serviceWorker.controller;   // false only on first-ever install
+  navigator.serviceWorker.addEventListener('controllerchange', ()=>{
+    if(reloading || !hadController) return;   // ignore the first-install claim; reload only on updates
+    reloading = true;
+    if(cookOpen){ pendingReload = true; reloading = false; return; }  // don't interrupt cooking
+    location.reload();
+  });
+  window.addEventListener('load', async ()=>{
+    try{
+      const reg = await navigator.serviceWorker.register('sw.js', { updateViaCache:'none' });
+      const promote = ()=>{ if(reg.waiting) reg.waiting.postMessage('SKIP_WAITING'); };
+      promote();  // a build was waiting from a previous visit
+      reg.addEventListener('updatefound', ()=>{
+        const nw = reg.installing; if(!nw) return;
+        nw.addEventListener('statechange', ()=>{
+          if(nw.state==='installed' && navigator.serviceWorker.controller) promote();
+        });
+      });
+      reg.update();  // check for a newer build now
+      document.addEventListener('visibilitychange', ()=>{
+        if(document.visibilityState==='visible') reg.update();   // ...and every time she reopens
+      });
+    }catch(e){}
+  });
 }
 /* Remind Mom to enable notifications shortly after the app appears (after the splash). */
 setTimeout(maybePromptNotify, SPLASH_MIN_MS + 900);

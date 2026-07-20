@@ -43,7 +43,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in sodium: bacon — use low-sodium versions or less. Higher in phosphorus: dairy — ask her dietitian.",
+      "ingredients": {
+        "3": "1 t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "boiled-cabbage",
@@ -84,7 +90,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in sodium: ham — use low-sodium versions or less.",
+      "ingredients": {
+        "4": "½ t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "fried-okra",
@@ -109,7 +121,13 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes.",
+      "ingredients": {
+        "3": "1½ t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "boiled-squash",
@@ -143,7 +161,13 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: squash — ask her dietitian about portions or swaps.",
+      "ingredients": {
+        "1": "salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "fried-green-tomatoes",
@@ -168,7 +192,13 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: tomatoes — ask her dietitian about portions or swaps.",
+      "ingredients": {
+        "2": "1 t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "potatoe-soup",
@@ -207,7 +237,13 @@
         "uses": []
       }
     ],
-    "notes": "Oleo is butter."
+    "notes": "Oleo is butter.",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: potatoes — ask her dietitian about portions or swaps. Higher in phosphorus: dairy — ask her dietitian.",
+      "ingredients": {
+        "2": "½ t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "meat-loaf",
@@ -259,7 +295,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in sodium: Worcestershire — use low-sodium versions or less. Higher in potassium: tomatoes — ask her dietitian about portions or swaps.",
+      "ingredients": {
+        "5": "1 t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "katherine-hepburn-brownies",
@@ -317,7 +359,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in phosphorus: nuts — ask her dietitian.",
+      "ingredients": {
+        "7": "¼ t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "angel-frost-punch",
@@ -359,7 +407,10 @@
         ]
       }
     ],
-    "notes": "Makes 11 cups."
+    "notes": "Makes 11 cups.",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes — use low-sodium versions or less. Higher in phosphorus: dairy — ask her dietitian."
+    }
   },
   {
     "id": "oatmeal-cake",
@@ -413,7 +464,10 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: oats — ask her dietitian."
+    }
   },
   {
     "id": "washday-cake",
@@ -448,7 +502,10 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy — ask her dietitian."
+    }
   },
   {
     "id": "lemon-lush",
@@ -493,7 +550,10 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in sodium: cheese — use low-sodium versions or less. Higher in phosphorus: cheese, dairy, nuts — ask her dietitian."
+    }
   },
   {
     "id": "beef-stroganoff",
@@ -528,7 +588,13 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: mushrooms — ask her dietitian about portions or swaps. Higher in phosphorus: dairy — ask her dietitian.",
+      "ingredients": {
+        "3": "1 t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "banana-nut-bread",
@@ -579,7 +645,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: bananas — ask her dietitian about portions or swaps. Higher in phosphorus: dairy, nuts — ask her dietitian.",
+      "ingredients": {
+        "5": "½ t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "cream-cheese-frosting",
@@ -611,7 +683,10 @@
         ]
       }
     ],
-    "notes": "Enough for a 2-layer, 9-inch cake."
+    "notes": "Enough for a 2-layer, 9-inch cake.",
+    "kidneySafe": {
+      "note": "Higher in sodium: cheese — use low-sodium versions or less. Higher in phosphorus: cheese, dairy — ask her dietitian."
+    }
   },
   {
     "id": "black-forest-cake",
@@ -691,7 +766,10 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes — use low-sodium versions or less. Higher in phosphorus: dairy, chocolate, cocoa — ask her dietitian."
+    }
   },
   {
     "id": "impossible-tuna-cheese-pie",
@@ -750,7 +828,10 @@
         "uses": []
       }
     ],
-    "notes": "Yield: 6 servings."
+    "notes": "Yield: 6 servings.",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes, cheese — use low-sodium versions or less. Higher in phosphorus: cheese, dairy, nuts — ask her dietitian."
+    }
   },
   {
     "id": "oven-fried-chicken",
@@ -799,7 +880,13 @@
         "uses": []
       }
     ],
-    "notes": "Yield: 6 servings."
+    "notes": "Yield: 6 servings.",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes.",
+      "ingredients": {
+        "3": "¼ t. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "vanilla-custard-pie-filling",
@@ -839,7 +926,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in phosphorus: dairy, nuts — ask her dietitian.",
+      "ingredients": {
+        "2": "dash salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "buttermilk-biscuits",
@@ -888,7 +981,13 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in phosphorus: dairy — ask her dietitian.",
+      "ingredients": {
+        "3": "1 tsp. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "sun-tea",
@@ -920,7 +1019,10 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: bran — ask her dietitian."
+    }
   },
   {
     "id": "chinese-rice",
@@ -964,7 +1066,13 @@
         ]
       }
     ],
-    "notes": "Makes 2 cups, or 3 servings."
+    "notes": "Makes 2 cups, or 3 servings.",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in sodium: soy sauce — use low-sodium versions or less.",
+      "ingredients": {
+        "3": "4 t. soy sauce → use low-sodium soy sauce (and a bit less)"
+      }
+    }
   },
   {
     "id": "creamy-buttercream-frosting",
@@ -993,7 +1101,10 @@
         "uses": []
       }
     ],
-    "notes": "About 1 cup of frosting."
+    "notes": "About 1 cup of frosting.",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy — ask her dietitian."
+    }
   },
   {
     "id": "heavenly-heart-chocolate-cake",
@@ -1056,7 +1167,13 @@
         "uses": []
       }
     ],
-    "notes": "To sour milk: use 2 teaspoons vinegar plus milk to equal ¾ cup."
+    "notes": "To sour milk: use 2 teaspoons vinegar plus milk to equal ¾ cup.",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in phosphorus: dairy, cocoa — ask her dietitian.",
+      "ingredients": {
+        "8": "¼ teaspoon salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "glossy-chocolate-sour-cream-frosting",
@@ -1086,7 +1203,10 @@
         ]
       }
     ],
-    "notes": "About 2½ cups frosting."
+    "notes": "About 2½ cups frosting.",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy, chocolate — ask her dietitian."
+    }
   },
   {
     "id": "rocky-road-cookies",
@@ -1116,7 +1236,10 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy, nuts, chocolate — ask her dietitian."
+    }
   },
   {
     "id": "impossible-pie",
@@ -1153,7 +1276,10 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy, cocoa — ask her dietitian."
+    }
   },
   {
     "id": "fudge-topping",
@@ -1190,7 +1316,13 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in phosphorus: dairy, chocolate, bran — ask her dietitian.",
+      "ingredients": {
+        "4": "pinch of salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "fluffy-frosting",
@@ -1219,7 +1351,10 @@
         "uses": []
       }
     ],
-    "notes": "Makes enough for a layer cake, but it must be stored in the fridge."
+    "notes": "Makes enough for a layer cake, but it must be stored in the fridge.",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes — use low-sodium versions or less. Higher in phosphorus: dairy — ask her dietitian."
+    }
   },
   {
     "id": "marie-callenders-cornbread",
@@ -1240,7 +1375,10 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes — use low-sodium versions or less."
+    }
   },
   {
     "id": "zucchini-bread",
@@ -1288,7 +1426,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in phosphorus: nuts — ask her dietitian.",
+      "ingredients": {
+        "6": "1 teasp. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "banana-nut-bread-2",
@@ -1334,7 +1478,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: bananas — ask her dietitian about portions or swaps. Higher in phosphorus: nuts — ask her dietitian.",
+      "ingredients": {
+        "1": "½ teaspoon salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "mexican-corn-bread",
@@ -1378,7 +1528,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in sodium: cheese — use low-sodium versions or less. Higher in phosphorus: cheese, dairy — ask her dietitian.",
+      "ingredients": {
+        "2": "1 teaspoon salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "pumpkin-nut-bread",
@@ -1422,7 +1578,10 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in potassium: pumpkin — ask her dietitian about portions or swaps. Higher in phosphorus: nuts — ask her dietitian."
+    }
   },
   {
     "id": "spudnuts",
@@ -1461,7 +1620,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: potatoes — ask her dietitian about portions or swaps. Higher in phosphorus: dairy — ask her dietitian.",
+      "ingredients": {
+        "2": "1 T. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "egg-salad",
@@ -1497,7 +1662,13 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in sodium: packaged mixes — use low-sodium versions or less. Higher in phosphorus: dairy — ask her dietitian.",
+      "ingredients": {
+        "4": "¼ teasp. salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "carrot-cake",
@@ -1571,7 +1742,13 @@
         ]
       }
     ],
-    "notes": "Serves 10-12."
+    "notes": "Serves 10-12.",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in sodium: cheese — use low-sodium versions or less. Higher in phosphorus: cheese, dairy, nuts — ask her dietitian.",
+      "ingredients": {
+        "8": "1 teaspoon salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "applesauce-cake",
@@ -1638,7 +1815,13 @@
         "uses": []
       }
     ],
-    "notes": "Serves 15."
+    "notes": "Serves 15.",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in potassium: raisins — ask her dietitian about portions or swaps. Higher in phosphorus: nuts, cocoa — ask her dietitian.",
+      "ingredients": {
+        "11": "1 teaspoon salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "english-toffee",
@@ -1674,7 +1857,10 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes — use low-sodium versions or less. Higher in phosphorus: nuts, chocolate — ask her dietitian."
+    }
   },
   {
     "id": "sees-fudge",
@@ -1716,7 +1902,10 @@
         "uses": []
       }
     ],
-    "notes": "Makes 24 pieces."
+    "notes": "Makes 24 pieces.",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy, nuts, chocolate — ask her dietitian."
+    }
   },
   {
     "id": "peanut-butter-cups",
@@ -1757,7 +1946,10 @@
         "uses": []
       }
     ],
-    "notes": "Makes 3 dozen."
+    "notes": "Makes 3 dozen.",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: peanuts, chocolate — ask her dietitian."
+    }
   },
   {
     "id": "cheesecake",
@@ -1809,7 +2001,10 @@
         ]
       }
     ],
-    "notes": "Serves approximately 30. Yields 2 8x8\" pans."
+    "notes": "Serves approximately 30. Yields 2 8x8\" pans.",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes, cheese — use low-sodium versions or less. Higher in phosphorus: cheese, dairy — ask her dietitian."
+    }
   },
   {
     "id": "cake-with-strawberries",
@@ -1854,7 +2049,10 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in sodium: cheese — use low-sodium versions or less. Higher in phosphorus: cheese, dairy — ask her dietitian."
+    }
   },
   {
     "id": "pina-colada-cake",
@@ -1932,7 +2130,10 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes — use low-sodium versions or less. Higher in phosphorus: dairy — ask her dietitian."
+    }
   },
   {
     "id": "banana-split-cake",
@@ -1986,7 +2187,10 @@
         "uses": []
       }
     ],
-    "notes": "Serves 4-6."
+    "notes": "Serves 4-6.",
+    "kidneySafe": {
+      "note": "Higher in potassium: bananas — ask her dietitian about portions or swaps. Higher in phosphorus: nuts — ask her dietitian."
+    }
   },
   {
     "id": "mississippi-mud-cake",
@@ -2054,7 +2258,10 @@
         ]
       }
     ],
-    "notes": ""
+    "notes": "",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy, nuts, cocoa — ask her dietitian."
+    }
   },
   {
     "id": "cherry-chocolate-top",
@@ -2098,7 +2305,13 @@
         "uses": []
       }
     ],
-    "notes": "Great on chocolate or devil's food cake baked in a brownie pan, cut in squares and left in the pan until serving. Makes enough for one cake."
+    "notes": "Great on chocolate or devil's food cake baked in a brownie pan, cut in squares and left in the pan until serving. Makes enough for one cake.",
+    "kidneySafe": {
+      "note": "Lowered the added salt — season with herbs, pepper, lemon, and garlic/onion powder instead. Don't use potassium-based “lite salt” substitutes. Higher in phosphorus: nuts, cocoa — ask her dietitian.",
+      "ingredients": {
+        "2": "very light sprinkle salt → reduce or leave out; season with herbs, pepper, lemon & garlic/onion powder"
+      }
+    }
   },
   {
     "id": "oh-henry-bars",
@@ -2141,7 +2354,10 @@
         ]
       }
     ],
-    "notes": "Makes 12-16."
+    "notes": "Makes 12-16.",
+    "kidneySafe": {
+      "note": "Higher in sodium: packaged mixes — use low-sodium versions or less. Higher in phosphorus: peanuts, chocolate, oats — ask her dietitian."
+    }
   },
   {
     "id": "truffles",
@@ -2176,6 +2392,9 @@
         "uses": []
       }
     ],
-    "notes": "Makes 4 dozen+."
+    "notes": "Makes 4 dozen+.",
+    "kidneySafe": {
+      "note": "Higher in phosphorus: dairy, chocolate — ask her dietitian."
+    }
   }
 ]

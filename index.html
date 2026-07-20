@@ -350,6 +350,40 @@
   @keyframes fade{ from{ opacity:0 } to{ opacity:1 } }
   @media (prefers-reduced-motion: reduce){ .view.active{ animation:fade .2s linear } }
 
+  /* ---------- Kidney-safe toggle ---------- */
+  .ks-toggle{
+    margin:14px 16px 2px; padding:12px 14px;
+    background:var(--card); border:1.6px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+  }
+  .ks-toggle.on{ border-color:#8fbf7f; box-shadow:0 6px 18px rgba(90,150,80,.16); }
+  .ks-row{ display:flex; align-items:center; gap:11px; }
+  .ks-ic{ font-size:22px; line-height:1 }
+  .ks-labels{ flex:1; min-width:0 }
+  .ks-labels b{ display:block; font-family:var(--serif); font-size:16px; font-weight:700 }
+  .ks-labels small{ color:var(--ink-soft); font-size:12.5px }
+  .ks-switch{
+    flex:0 0 auto; width:50px; height:30px; border-radius:999px;
+    background:var(--line); position:relative; transition:background .2s ease;
+  }
+  .ks-toggle.on .ks-switch{ background:#6bab5b }
+  .ks-switch .knob{
+    position:absolute; top:3px; left:3px; width:24px; height:24px; border-radius:50%;
+    background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); transition:transform .2s ease;
+  }
+  .ks-toggle.on .ks-switch .knob{ transform:translateX(20px) }
+  .ks-note{
+    margin-top:11px; padding-top:11px; border-top:1px dashed var(--line);
+    font-size:13px; line-height:1.5; color:var(--ink-soft);
+  }
+  .ks-disc{ margin-top:7px; font-size:11.5px; color:var(--muted); font-style:italic; line-height:1.45 }
+  .ks-tag{
+    display:inline-block; margin-left:7px; font-size:10px; font-weight:700; letter-spacing:.3px;
+    text-transform:uppercase; color:#3f7a34; background:#e4f0df; border-radius:999px; padding:1px 7px;
+    vertical-align:middle;
+  }
+  .ings li.ks-adj, #cook-ings-list li.ks-adj{ background:rgba(107,171,91,.09); border-radius:10px }
+  .steps li.ks-adj{ box-shadow:inset 3px 0 0 #6bab5b; border-radius:10px }
+
   /* ---------- Splash screen ----------
      Branded launch screen that cross-dissolves into the app: as the splash
      eases out (with a soft scale), the app rises in beneath it. */
@@ -634,31 +668,62 @@ function openRecipe(id){
 }
 function goHome(){ location.hash = ''; }
 
+/* ---- Kidney-safe mode: shows an alternate, near-identical version of a recipe
+   with lower-sodium swaps and dietitian flags. Preference is sticky. ---- */
+let KIDNEY = (()=>{ try{ return localStorage.getItem('lc:kidney')==='1'; }catch(e){ return false; } })();
+function ingText(r,i){ const o = KIDNEY && r.kidneySafe && r.kidneySafe.ingredients; return (o && o[i]!=null) ? o[i] : r.ingredients[i]; }
+function ingChanged(r,i){ return !!(KIDNEY && r.kidneySafe && r.kidneySafe.ingredients && r.kidneySafe.ingredients[i]!=null); }
+function stepText(r,i){ const o = KIDNEY && r.kidneySafe && r.kidneySafe.steps; return (o && o[i]!=null) ? o[i] : r.steps[i].text; }
+function stepChanged(r,i){ return !!(KIDNEY && r.kidneySafe && r.kidneySafe.steps && r.kidneySafe.steps[i]!=null); }
+function toggleKidney(){
+  KIDNEY = !KIDNEY;
+  try{ localStorage.setItem('lc:kidney', KIDNEY?'1':'0'); }catch(e){}
+  if(currentRecipe){ renderRecipe(currentRecipe); if(cookOpen){ renderCook(); renderCookIngs(); } }
+}
+
 function renderRecipe(r){
   currentRecipe = r;
   const prog = loadProg(r.id);
   $('#t-title').textContent = r.title;
 
-  const ings = r.ingredients.map((ing,i)=>`
-    <li class="${prog.ing[i]?'done':''}" onclick="toggleIng(${i})">
+  const ings = r.ingredients.map((ing,i)=>{
+    const adj = ingChanged(r,i);
+    return `
+    <li class="${prog.ing[i]?'done':''} ${adj?'ks-adj':''}" onclick="toggleIng(${i})">
       <span class="check">${checkSVG()}</span>
-      <span class="txt">${esc(ing)}</span>
-    </li>`).join('');
+      <span class="txt">${esc(ingText(r,i))}${adj?'<span class="ks-tag">adjusted</span>':''}</span>
+    </li>`;
+  }).join('');
 
   const steps = r.steps.map((s,i)=>{
+    const adj = stepChanged(r,i);
     const t = s.timer ? `<button class="timer-btn" id="tbtn-${i}" onclick="event.stopPropagation();startStepTimer(${i})">${clockSVG()} Start ${s.timer} min${s.timerLabel?' · '+esc(s.timerLabel):''}</button>` : '';
     return `
-    <li class="step ${prog.step[i]?'done':''}" id="step-${i}">
+    <li class="step ${prog.step[i]?'done':''} ${adj?'ks-adj':''}" id="step-${i}">
       <div class="sidx">${i+1}</div>
       <div class="sbody">
         <div class="step-top">
-          <p class="stext">${esc(s.text)}</p>
+          <p class="stext">${esc(stepText(r,i))}${adj?'<span class="ks-tag">adjusted</span>':''}</p>
           <span class="check" onclick="toggleStep(${i})">${checkSVG()}</span>
         </div>
         ${t}
       </div>
     </li>`;
   }).join('');
+
+  const ks = `
+    <div class="ks-toggle ${KIDNEY?'on':''}">
+      <div class="ks-row">
+        <span class="ks-ic">💚</span>
+        <div class="ks-labels">
+          <b>Kidney-safe version</b>
+          <small>${KIDNEY ? 'Showing lower-sodium swaps' : 'Adjust this recipe for her kidney diet'}</small>
+        </div>
+        <button class="ks-switch" role="switch" aria-checked="${KIDNEY}" aria-label="Kidney-safe version" onclick="toggleKidney()"><span class="knob"></span></button>
+      </div>
+      ${KIDNEY ? `<div class="ks-note">${r.kidneySafe ? esc(r.kidneySafe.note) : 'No kidney-safe swaps are set for this recipe yet.'}</div>
+      <div class="ks-disc">General suggestions to make this gentler on her kidneys — please confirm with her doctor or renal dietitian.</div>` : ''}
+    </div>`;
 
   $('#recipe-body').innerHTML = `
     <div class="hero gingham">${r.image ? `<img src="${r.image}" alt="">` : (r.emoji||'🍽️')}</div>
@@ -667,6 +732,7 @@ function renderRecipe(r){
       <h1>${esc(r.title)}</h1>
       ${r.description?`<p class="desc">${esc(r.description)}</p>`:''}
     </div>
+    ${ks}
     <div class="r-meta">
       ${r.servings?`<div class="pill"><b>${esc(r.servings)}</b><small>Serves</small></div>`:''}
       <div class="pill"><b>${r.steps.length}</b><small>Steps</small></div>
@@ -716,7 +782,7 @@ function renderCookIngs(){
   const r=currentRecipe; if(!r) return;
   const p=loadProg(r.id);
   $('#cook-ings-list').innerHTML = r.ingredients.map((x,idx)=>
-    `<li class="${p.ing[idx]?'done':''}">${esc(x)}</li>`).join('');
+    `<li class="${p.ing[idx]?'done':''} ${ingChanged(r,idx)?'ks-adj':''}">${esc(ingText(r,idx))}</li>`).join('');
 }
 
 /* ---- timers ---- */
@@ -1055,7 +1121,7 @@ function renderCook(){
   body.innerHTML=`
     <div class="cook-step">
       <div class="cook-num">${cookIdx+1}</div>
-      <p class="cook-text">${esc(s.text)}</p>
+      <p class="cook-text">${esc(stepText(r,cookIdx))}</p>
       ${s.timer?`<div class="cook-timer" id="cook-timer"></div>`:''}
     </div>`;
   syncCookTimer();

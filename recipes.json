@@ -1,0 +1,2181 @@
+[
+  {
+    "id": "corn-bread",
+    "title": "Corn Bread",
+    "emoji": "🍞",
+    "category": "Bread",
+    "page": 2,
+    "ingredients": [
+      "2 c. yellow cornmeal",
+      "4 T. flour",
+      "1½ t. baking powder",
+      "1 t. salt",
+      "1½ cups buttermilk",
+      "2 eggs (beaten)",
+      "2 T. oil or bacon drippings"
+    ],
+    "steps": [
+      {
+        "text": "Sift cornmeal, flour, baking powder and salt.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "Add buttermilk, eggs and bacon drippings.",
+        "uses": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "text": "Stir only until all ingredients are mixed well. Pour into greased skillet.",
+        "uses": []
+      },
+      {
+        "text": "Bake, 400 degrees about 30 min.",
+        "timer": 30,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "boiled-cabbage",
+    "title": "Boiled Cabbage",
+    "emoji": "🥬",
+    "category": "Vegetable",
+    "page": 3,
+    "ingredients": [
+      "1 head cabbage (cut up)",
+      "2 pounds ham hocks (ham bones)",
+      "¼ c. water",
+      "1 T. red vinegar",
+      "½ t. salt",
+      "¾ t. pepper"
+    ],
+    "steps": [
+      {
+        "text": "Bring water to boil. Add all ingredients. Cover and stir occasionally. Cook until cabbage is tender.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Additional water may be added if needed.",
+        "uses": [
+          2
+        ]
+      },
+      {
+        "text": "Cook over low heat about 30 min.",
+        "timer": 30,
+        "timerLabel": "Cook",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "fried-okra",
+    "title": "Fried Okra",
+    "emoji": "🫑",
+    "category": "Vegetable",
+    "page": 4,
+    "ingredients": [
+      "8 pods okra (about 4 c.)",
+      "1 c. yellow cornmeal",
+      "1 T. flour",
+      "1½ t. salt",
+      "½ t. pepper"
+    ],
+    "steps": [
+      {
+        "text": "Sprinkle okra with cornmeal and flour, fry in oil until partly brown.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "boiled-squash",
+    "title": "Boiled Squash",
+    "emoji": "🎃",
+    "category": "Vegetable",
+    "page": 5,
+    "ingredients": [
+      "4 med. yellow squash",
+      "salt",
+      "pepper",
+      "2 T. oleo"
+    ],
+    "steps": [
+      {
+        "text": "Cut squash in slices, put in pan of water to cover squash, boil until tender.",
+        "uses": [
+          0
+        ]
+      },
+      {
+        "text": "Drain water and mash squash with blender.",
+        "uses": []
+      },
+      {
+        "text": "Add salt, pepper, oleo, stir well.",
+        "uses": [
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "fried-green-tomatoes",
+    "title": "Fried Green Tomatoes",
+    "emoji": "🍅",
+    "category": "Vegetable",
+    "page": 6,
+    "ingredients": [
+      "3 tomatoes (green)",
+      "2 c. flour",
+      "1 t. salt",
+      "½ t. pepper"
+    ],
+    "steps": [
+      {
+        "text": "Slice tomatoes into thick crosswise slices, sprinkle with salt & pepper, roll in flour, fry in hot oil until golden brown.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "potatoe-soup",
+    "title": "Potatoe Soup",
+    "emoji": "🥔",
+    "category": "Soup",
+    "page": 7,
+    "ingredients": [
+      "4 med. potatoes",
+      "2 onions (med)",
+      "½ t. salt",
+      "4 T. oleo",
+      "1 cup half & half milk",
+      "¼ t. black pepper"
+    ],
+    "steps": [
+      {
+        "text": "Peel potatoes, boil in pan until tender, drain water.",
+        "uses": [
+          0
+        ]
+      },
+      {
+        "text": "Add milk, oleo, salt, pepper. Mix 4 tablespoons of flour and ½ c. water, stir till smooth, add to potatoes.",
+        "uses": [
+          4,
+          3,
+          2,
+          5
+        ]
+      },
+      {
+        "text": "Boil 2 min.",
+        "timer": 2,
+        "timerLabel": "Boil",
+        "uses": []
+      }
+    ],
+    "notes": "Oleo is butter."
+  },
+  {
+    "id": "meat-loaf",
+    "title": "Meat Loaf",
+    "emoji": "🍖",
+    "category": "Main Dish",
+    "page": 8,
+    "ingredients": [
+      "2 pounds ground meat",
+      "½ c. bread crumbs",
+      "6 T. onion (chopped)",
+      "2 eggs",
+      "1 c. tomato sauce",
+      "1 t. salt",
+      "½ t. pepper",
+      "2 t. mustard",
+      "2 T. worcestershire sauce"
+    ],
+    "steps": [
+      {
+        "text": "Mix together except ½ cup tomato sauce and worcestershire sauce, shape into loaf (2 loaves).",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "text": "Bake for 20 to 30 min over low heat.",
+        "timer": 30,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Mix mustard, ½ c. tomato sauce & worcestershire, pour over meat loaf.",
+        "uses": [
+          7,
+          4,
+          8
+        ]
+      },
+      {
+        "text": "Bake in oven 400°F until done.",
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "katherine-hepburn-brownies",
+    "title": "Katherine Hepburn Brownies",
+    "emoji": "🍫",
+    "category": "Dessert",
+    "page": 9,
+    "servings": "12",
+    "ingredients": [
+      "2 sq. unsweetened choc.",
+      "¼ lb. butter",
+      "1 c. sugar",
+      "2 eggs",
+      "½ t. vanilla",
+      "1 c. chopped walnuts",
+      "¼ c. flour",
+      "¼ t. salt"
+    ],
+    "steps": [
+      {
+        "text": "Prepare oven at 325°.",
+        "uses": []
+      },
+      {
+        "text": "Melt choc. & butter over very low heat.",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Remove from heat and stir in sugar, add eggs and vanilla.",
+        "uses": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "text": "Quickly stir in walnuts, flour & salt.",
+        "uses": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "text": "Spread batter in well greased 8 x 8 baking pan, bake for 40 to 45 min.",
+        "timer": 45,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Remove the pan to a rack to cool, cut into 12 pieces.",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "angel-frost-punch",
+    "title": "Angel Frost Punch",
+    "emoji": "🍓",
+    "category": "Drink",
+    "page": 10,
+    "servings": "11 cups",
+    "ingredients": [
+      "2 - 10 oz. pkg frozen sliced strawberries",
+      "2 - 6 oz. cans frozen pink lemonade",
+      "2 c. water",
+      "1 qt. vanilla ice cream",
+      "2 - 7 oz. bottles 7-Up or Sprite"
+    ],
+    "steps": [
+      {
+        "text": "Mix half of everything except 7-Up in blender until smooth and thick.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "Repeat with remaining ingredients and add to punch bowl.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "Carefully pour 7-Up down side of the bowl. Mix gently.",
+        "uses": [
+          4
+        ]
+      }
+    ],
+    "notes": "Makes 11 cups."
+  },
+  {
+    "id": "oatmeal-cake",
+    "title": "Oatmeal Cake",
+    "emoji": "🍰",
+    "category": "Dessert",
+    "page": 11,
+    "ingredients": [
+      "1 c. oatmeal",
+      "1½ c. boiling water",
+      "1 c. white sugar",
+      "1 c. brown sugar",
+      "2 eggs",
+      "½ c. butter",
+      "1 tsp. baking soda",
+      "½ tsp. cinnimon",
+      "1½ c. flour"
+    ],
+    "steps": [
+      {
+        "text": "Pour water over oats, let stand 20 min.",
+        "timer": 20,
+        "timerLabel": "Stand",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Combine all ingredients except flour, add flour last.",
+        "uses": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "text": "Bake in oblong pan 25 min at 350°.",
+        "timer": 25,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Icing: ¾ c. brown sugar, ¾ stick oleo, 4 tbs. milk. Boil one min. Add 1 c. chopped nuts and 1 cup cocoanut & pour over cake while both are hot.",
+        "timer": 1,
+        "timerLabel": "Boil",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "washday-cake",
+    "title": "Washday Cake",
+    "emoji": "🍮",
+    "category": "Dessert",
+    "page": 13,
+    "ingredients": [
+      "1 c. sugar",
+      "1 c. flour",
+      "⅔ c. milk",
+      "1½ t. baking powder"
+    ],
+    "steps": [
+      {
+        "text": "Mix above into thin batter.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "Melt 1 stick oleo in baking dish, pour batter over oleo. Add large can fruit over this.",
+        "uses": []
+      },
+      {
+        "text": "Bake at 375° for 45 min.",
+        "timer": 45,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "lemon-lush",
+    "title": "Lemon Lush",
+    "emoji": "🍋",
+    "category": "Dessert",
+    "page": 14,
+    "ingredients": [
+      "1 stick butter",
+      "¼ c. chopped pecans",
+      "1 c. flour",
+      "1 c. powdered sugar",
+      "1 8 oz. cream cheese",
+      "1 c. cool whip",
+      "2 sm. boxes instant lemon pudding",
+      "3 cups milk"
+    ],
+    "steps": [
+      {
+        "text": "Crust: combine 1 stick butter, ¼ c. chopped pecans, 1 c. flour. Press into 9x13 dish. Bake @ 350° for 15 min. Cool.",
+        "timer": 15,
+        "timerLabel": "Bake",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Mix together 1 c. powdered sugar, 1 8 oz. cream cheese, 1 c. cool whip. Spread over cooled crust.",
+        "uses": [
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Mix 2 sm. boxes instant lemon pudding with 3 cups milk. Beat well. Spread over cream cheese mixture.",
+        "uses": [
+          6,
+          7
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "beef-stroganoff",
+    "title": "Beef Stroganoff",
+    "emoji": "🥩",
+    "category": "Main Dish",
+    "page": 15,
+    "ingredients": [
+      "1½# tenderloin (cut into thin strips)",
+      "4 oz. can mushrooms, drained",
+      "½ sm. onion",
+      "1 t. salt",
+      "garlic to taste",
+      "1 c. sour cream",
+      "3 T. flour"
+    ],
+    "steps": [
+      {
+        "text": "Brown meat, onions, mushrooms, garlic and flour in skillet. When brown add a little oleo. Stir until oleo is melted.",
+        "uses": [
+          0,
+          1,
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "text": "Add sour cream and mix well.",
+        "uses": [
+          5
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "banana-nut-bread",
+    "title": "Banana Nut Bread",
+    "emoji": "🍌",
+    "category": "Bread",
+    "page": 16,
+    "ingredients": [
+      "½ c. milk",
+      "3 sm. bananas, cut up",
+      "1 egg",
+      "2½ c. sifted flour",
+      "3 t. baking powder",
+      "½ t. salt",
+      "¾ c. walnuts",
+      "1 c. sugar",
+      "½ c. soft butter"
+    ],
+    "steps": [
+      {
+        "text": "In med. bowl mix together the flour, baking powder, & salt. Set aside.",
+        "uses": [
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Put walnuts in blender & mix for 10 secs. Add to dry ingredients.",
+        "uses": [
+          6
+        ]
+      },
+      {
+        "text": "In blender mix sugar, butter, egg, milk, & bananas for 15 secs. Pour over dry ingredients & mix until moist.",
+        "uses": [
+          7,
+          8,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Pour into greased 9x5x3 loaf pan & bake in preheated 350° oven for 1 hour.",
+        "timer": 60,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "cream-cheese-frosting",
+    "title": "Cream Cheese Frosting",
+    "emoji": "🧁",
+    "category": "Dessert",
+    "page": 17,
+    "ingredients": [
+      "4 T. med. cream",
+      "1 t. vanilla or lemon extract",
+      "6 oz. soft cream cheese",
+      "1 T. soft butter",
+      "3 c. confectioners sugar"
+    ],
+    "steps": [
+      {
+        "text": "In blender mix cream, vanilla, butter & cream cheese for 15 secs.",
+        "uses": [
+          0,
+          1,
+          3,
+          2
+        ]
+      },
+      {
+        "text": "Add 1 c. sugar & mix for 3 secs & add remaining sugar while motor is running.",
+        "uses": [
+          4
+        ]
+      }
+    ],
+    "notes": "Enough for a 2-layer, 9-inch cake."
+  },
+  {
+    "id": "black-forest-cake",
+    "title": "Black Forest Cake",
+    "emoji": "🍒",
+    "category": "Dessert",
+    "page": 18,
+    "ingredients": [
+      "1 c. water",
+      "½ c. oil",
+      "3 eggs",
+      "1 Pillsbury German Chocolate Cake Mix",
+      "¼ c. Hershey cocoa",
+      "1 can Wilderness Cherry Pie Filling",
+      "½ pt. whipping cream",
+      "½ can Pillsbury Chocolate Fudge Frosting"
+    ],
+    "steps": [
+      {
+        "text": "Add cake mix, cocoa, water, oil & eggs to electric mixer bowl.",
+        "uses": [
+          3,
+          4,
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Beat @ low, then beat 2 mins.",
+        "timer": 2,
+        "timerLabel": "Beat",
+        "uses": []
+      },
+      {
+        "text": "After mixed, beat @ higher speed.",
+        "uses": []
+      },
+      {
+        "text": "Pour into 2 greased 9\" cake pans @ 350° for 25-35 mins.",
+        "timer": 35,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Cool in pans for 15 mins, remove from pans & continue to cool.",
+        "timer": 15,
+        "timerLabel": "Cool",
+        "uses": []
+      },
+      {
+        "text": "Wrap loosely in Saran wrap & refrigerate overnight.",
+        "uses": []
+      },
+      {
+        "text": "Unwrap & put cake layer on flat plate. Put about ½ of cherry filling on layer & leave about 1\" outer edge without filling.",
+        "uses": [
+          5
+        ]
+      },
+      {
+        "text": "Place 2nd layer on top. Frost sides of cake with chocolate frosting.",
+        "uses": [
+          7
+        ]
+      },
+      {
+        "text": "Whip cream, with teaspoon put whipped cream in mounds around edge of cake.",
+        "uses": [
+          6
+        ]
+      },
+      {
+        "text": "Pour remaining cherry filling in center. Refrigerate.",
+        "uses": [
+          5
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "impossible-tuna-cheese-pie",
+    "title": "Impossible Tuna Cheese Pie",
+    "emoji": "🐟",
+    "category": "Main Dish",
+    "page": 19,
+    "servings": "6",
+    "ingredients": [
+      "1 c. milk",
+      "3 eggs",
+      "¾ c. Bisquick",
+      "⅛ t. ground nutmeg",
+      "1 c. shredded process sharp American cheese",
+      "½ (10 oz) frozen green peas, rinsed & drained",
+      "¼ c. sliced green onion with tops",
+      "1 can (6.5 oz) well drained tuna",
+      "1 (2 oz) jar chopped pimento, drained",
+      "1 pkg. cream cheese, cut into ½\" cubes"
+    ],
+    "steps": [
+      {
+        "text": "Heat oven to 400°. Grease 9x1¼\" pie plate.",
+        "uses": []
+      },
+      {
+        "text": "Mix cheese, peas, onion, tuna & pimento in plate. Top with cream cheese cubes.",
+        "uses": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "text": "Beat remaining ingredients until smooth in blender on high speed, or 1 min by hand.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "Pour into pie plate. Bake until knife inserted in center comes out clean, about 30 to 35 mins.",
+        "timer": 35,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Cool 5 mins.",
+        "timer": 5,
+        "timerLabel": "Cool",
+        "uses": []
+      }
+    ],
+    "notes": "Yield: 6 servings."
+  },
+  {
+    "id": "oven-fried-chicken",
+    "title": "Oven Fried Chicken",
+    "emoji": "🍗",
+    "category": "Main Dish",
+    "page": 20,
+    "servings": "6",
+    "ingredients": [
+      "1 T. oleo",
+      "⅔ c. Bisquick",
+      "1½ t. paprika",
+      "¼ t. salt",
+      "¼ t. pepper",
+      "2½ to 3½# broiler-fryer chicken, cut up"
+    ],
+    "steps": [
+      {
+        "text": "Heat oven to 425°. Melt oleo in rectangular pan, 13x9x2\".",
+        "uses": [
+          0
+        ]
+      },
+      {
+        "text": "Mix Bisquick, paprika, salt & pepper. Coat chicken.",
+        "uses": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Place chicken, skin sides down, in pan. Bake uncovered 35 mins.",
+        "timer": 35,
+        "timerLabel": "Bake",
+        "uses": [
+          5
+        ]
+      },
+      {
+        "text": "Turn & bake until done, about 15 mins.",
+        "timer": 15,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": "Yield: 6 servings."
+  },
+  {
+    "id": "vanilla-custard-pie-filling",
+    "title": "Vanilla Custard Pie Filling",
+    "emoji": "🥧",
+    "category": "Dessert",
+    "page": 21,
+    "ingredients": [
+      "4 eggs",
+      "½ c. sugar",
+      "dash salt",
+      "¼ t. nutmeg",
+      "1 t. vanilla",
+      "2 c. scalding hot milk"
+    ],
+    "steps": [
+      {
+        "text": "Put all ingredients except milk into blender. Blend on low for 30 secs.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "text": "Gradually pour in hot milk.",
+        "uses": [
+          5
+        ]
+      },
+      {
+        "text": "Pour mixture into 8\" pie shell. Bake in preheated oven 325° for 30 mins.",
+        "timer": 30,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "buttermilk-biscuits",
+    "title": "Buttermilk Biscuits",
+    "emoji": "🫓",
+    "category": "Bread",
+    "page": null,
+    "ingredients": [
+      "3 cups sifted all purpose flour",
+      "3 tsp. baking powder",
+      "1 tsp. baking soda",
+      "1 tsp. salt",
+      "1 Tablespoon sugar",
+      "⅔ cup + 2 Tablespoon vegetable shortening",
+      "1½ cups buttermilk",
+      "2 Tablespoon melted butter"
+    ],
+    "steps": [
+      {
+        "text": "Sift flour, baking powder, baking soda, salt & sugar into a large bowl. Cut in shortening with a pastry blender until mixture is the texture of coarse meal. Make a well in center.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Pour in buttermilk, and mix lightly with a fork, just until dry ingredients are moistened and dough holds together.",
+        "uses": [
+          6
+        ]
+      },
+      {
+        "text": "Turn dough out onto a lightly floured surface, knead lightly 2 or 3 times, then roll out with a floured rolling pin about ½ inch thick. Cut in rounds with a floured 2¾ inch biscuit cutter. Place biscuits on an ungreased cookie sheet.",
+        "uses": []
+      },
+      {
+        "text": "Bake in a very hot oven (450°) for 10 min or until puffed and golden brown.",
+        "timer": 10,
+        "timerLabel": "Bake",
+        "uses": [
+          7
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "sun-tea",
+    "title": "Sun Tea",
+    "emoji": "🧊",
+    "category": "Drink",
+    "page": null,
+    "servings": "1 quart (12-16 glasses)",
+    "ingredients": [
+      "12 tea bags (use your favorite brand)",
+      "Water (about 1 quart)"
+    ],
+    "steps": [
+      {
+        "text": "Empty contents of tea bags into a 1 quart preserving jar. Add water and stir briskly. Screw jar lid down tight so jar will not leak when turned upside down.",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Set jar in a sunny window and leave until liquid is as dark as strong coffee — how long this takes varies with the sun, but allow anywhere from 4 to 8 hours. Also turn the jar several times as the tea brews.",
+        "timer": 480,
+        "timerLabel": "In the sun",
+        "uses": []
+      },
+      {
+        "text": "Strain tea through a small fine sieve into a clean 1 quart preserving jar. Screw lid down tight; store in refrigerator.",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "chinese-rice",
+    "title": "Chinese Rice",
+    "emoji": "🍚",
+    "category": "Main Dish",
+    "page": null,
+    "servings": "2-3",
+    "ingredients": [
+      "1 egg, beaten",
+      "1 t. oil",
+      "¾ c. water",
+      "4 t. soy sauce",
+      "⅛ t. garlic powder",
+      "¼ c. chopped green onions",
+      "1 c. minute rice"
+    ],
+    "steps": [
+      {
+        "text": "Scramble egg in oil in saucepan, stirring to break into pieces.",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Add water, soy sauce, garlic and onions; bring to a boil.",
+        "uses": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Stir in rice. Cover, remove from heat and let stand 5 min. Fluff with fork before serving.",
+        "timer": 5,
+        "timerLabel": "Stand",
+        "uses": [
+          6
+        ]
+      }
+    ],
+    "notes": "Makes 2 cups, or 3 servings."
+  },
+  {
+    "id": "creamy-buttercream-frosting",
+    "title": "Creamy Buttercream Frosting",
+    "emoji": "🧁",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "2 cups confectioner's sugar",
+      "¼ cup butter or margarine",
+      "2½ tablespoons milk",
+      "½ teaspoon vanilla"
+    ],
+    "steps": [
+      {
+        "text": "Combine ingredients until smooth and creamy in a small bowl.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "With decorating tube, pipe frosting around edges of cake.",
+        "uses": []
+      }
+    ],
+    "notes": "About 1 cup of frosting."
+  },
+  {
+    "id": "heavenly-heart-chocolate-cake",
+    "title": "Heavenly Heart Chocolate Cake",
+    "emoji": "🎂",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "¾ cup unsweetened cocoa",
+      "⅔ cup boiling water",
+      "¾ cup butter or margarine, softened",
+      "2 cups sugar",
+      "1 teaspoon vanilla",
+      "2 eggs",
+      "2 cups unsifted cake flour (or 1¾ cups all-purpose flour)",
+      "1¼ teaspoons baking soda",
+      "¼ teaspoon salt",
+      "¾ cup buttermilk or sour milk"
+    ],
+    "steps": [
+      {
+        "text": "Stir together cocoa and boiling water in small bowl until smooth; set aside.",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Cream butter or margarine, sugar and vanilla in large mixer bowl until fluffy; beat in eggs and cocoa mixture.",
+        "uses": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Combine flour, baking soda, and salt; add alternately with buttermilk or sour milk to creamed mixture.",
+        "uses": [
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "text": "Pour batter into two greased and floured heart-shaped pans or two 9-inch layer pans. Bake at 350° for 30-35 minutes or until cake tester inserted in center comes out clean.",
+        "timer": 35,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Cool 10 minutes; remove from pans. Cool completely.",
+        "timer": 10,
+        "timerLabel": "Cool",
+        "uses": []
+      },
+      {
+        "text": "Frost with Glossy Chocolate Sour Cream Frosting and pipe with Creamy Buttercream Frosting. Sprinkle with chopped nuts if desired.",
+        "uses": []
+      }
+    ],
+    "notes": "To sour milk: use 2 teaspoons vinegar plus milk to equal ¾ cup."
+  },
+  {
+    "id": "glossy-chocolate-sour-cream-frosting",
+    "title": "Glossy Chocolate Sour Cream Frosting",
+    "emoji": "🍫",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "1½ cups semi-sweet chocolate mini-chips",
+      "¾ cup sour cream",
+      "2 cups confectioner's sugar",
+      "1 teaspoon vanilla"
+    ],
+    "steps": [
+      {
+        "text": "Melt mini-chips in top of double boiler over hot water. Stir constantly until completely melted.",
+        "uses": [
+          0
+        ]
+      },
+      {
+        "text": "Remove from heat; beat in sour cream, confectioner's sugar and vanilla.",
+        "uses": [
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "notes": "About 2½ cups frosting."
+  },
+  {
+    "id": "rocky-road-cookies",
+    "title": "Rocky Road Cookies",
+    "emoji": "🍬",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "2 lbs. marshmallows (small ones)",
+      "6½ oz. maraschino cherries, cut & drained",
+      "5 - 9 oz. milk chocolate bars",
+      "1½ cup nuts"
+    ],
+    "steps": [
+      {
+        "text": "Melt bars in top of double boiler (just barely melt, not too hot).",
+        "uses": [
+          2
+        ]
+      },
+      {
+        "text": "Add marshmallows, cherries, and nuts. Mix & spread in buttered pan.",
+        "uses": [
+          0,
+          1,
+          3
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "impossible-pie",
+    "title": "Impossible Pie",
+    "emoji": "🥥",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "1 cup sugar",
+      "2 cups milk",
+      "1 cup cocoanut",
+      "½ cup flour",
+      "1 teasp. vanilla",
+      "4 eggs",
+      "6 tables. oleo"
+    ],
+    "steps": [
+      {
+        "text": "Put all ingredients in blender; mix very good then pour into 9\" greased pie pan.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "text": "Bake 350°F for 40 min. Serve warm or cold.",
+        "timer": 40,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "fudge-topping",
+    "title": "Fudge Topping",
+    "emoji": "🍫",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "1 - 1½ squares chocolate",
+      "1 can Eagle Brand milk",
+      "½ teasp. vanilla",
+      "1 cup boiling water",
+      "pinch of salt"
+    ],
+    "steps": [
+      {
+        "text": "Melt chocolate in double boiler.",
+        "uses": [
+          0
+        ]
+      },
+      {
+        "text": "Add milk & cook until thick.",
+        "uses": [
+          1
+        ]
+      },
+      {
+        "text": "Add vanilla and salt and water to consistency desired.",
+        "uses": [
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "fluffy-frosting",
+    "title": "Fluffy Frosting",
+    "emoji": "🧁",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "1 pkg. Dream Whip",
+      "1 pkg. (sm) instant pudding (any flavor)",
+      "1½ cups cold milk"
+    ],
+    "steps": [
+      {
+        "text": "Mix in deep bowl: Dream Whip, instant pudding, and cold milk.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Blend, then beat at high speed to soft peaks — takes 4-6 min.",
+        "timer": 6,
+        "timerLabel": "Beat",
+        "uses": []
+      }
+    ],
+    "notes": "Makes enough for a layer cake, but it must be stored in the fridge."
+  },
+  {
+    "id": "marie-callenders-cornbread",
+    "title": "Marie Callender's Cornbread",
+    "emoji": "🌽",
+    "category": "Bread",
+    "page": null,
+    "ingredients": [
+      "1 - 8½ oz pkg. cornbread mix",
+      "1 - 8½ oz. pkg white cake mix"
+    ],
+    "steps": [
+      {
+        "text": "Prepare each as directed on package. Blend both together and bake according to directions on cornbread box.",
+        "uses": [
+          0,
+          1
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "zucchini-bread",
+    "title": "Zucchini Bread",
+    "emoji": "🥒",
+    "category": "Bread",
+    "page": null,
+    "ingredients": [
+      "3 eggs",
+      "1 cup oil",
+      "2 cups sugar",
+      "2 cups peeled grated zucchini",
+      "1 teaspoon vanilla",
+      "3 cups flour",
+      "1 teasp. salt",
+      "1 teaspoon cinnimon",
+      "1 teasp. baking powder",
+      "½ cup chopped nuts"
+    ],
+    "steps": [
+      {
+        "text": "Beat eggs until foamy, add oil, sugar, zucchini and vanilla, mix well.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "text": "Sift dry ingredients and add along with nuts.",
+        "uses": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "text": "Pour into 2 loaf pans, bake 325°F for 1 hour.",
+        "timer": 60,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "banana-nut-bread-2",
+    "title": "Banana Nut Bread (No. 2)",
+    "emoji": "🍌",
+    "category": "Bread",
+    "page": null,
+    "ingredients": [
+      "2 cups sifted flour",
+      "½ teaspoon salt",
+      "½ cup nuts",
+      "1 cup sugar",
+      "3-4 very ripe bananas",
+      "½ cup shortening",
+      "1 teaspoon baking soda",
+      "2 eggs",
+      "1 teasp. vanilla"
+    ],
+    "steps": [
+      {
+        "text": "Sift dry ingredients, add remaining ingredients.",
+        "uses": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "text": "Stir well, add nuts last.",
+        "uses": [
+          2
+        ]
+      },
+      {
+        "text": "Bake 275° for 1½ hours.",
+        "timer": 90,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "mexican-corn-bread",
+    "title": "Mexican Corn Bread",
+    "emoji": "🌽",
+    "category": "Bread",
+    "page": null,
+    "ingredients": [
+      "1 cup corn meal",
+      "½ teaspoon soda",
+      "1 teaspoon salt",
+      "¼ cup oil",
+      "1 small can cream style corn",
+      "1 can (4 oz) chopped green chili peppers",
+      "2 eggs",
+      "1½ cups grated longhorn cheese"
+    ],
+    "steps": [
+      {
+        "text": "Mix well: corn meal, soda, salt.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Add: oil, cream style corn, chili peppers, eggs, cheese.",
+        "uses": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "text": "Blend together all ingredients. Pour into well greased 9 x 13 pan. Bake 400°F for 45 min.",
+        "timer": 45,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "pumpkin-nut-bread",
+    "title": "Pumpkin Nut Bread",
+    "emoji": "🎃",
+    "category": "Bread",
+    "page": null,
+    "ingredients": [
+      "2½ cups flour",
+      "1 cup sugar",
+      "2 tablespoon cinnimon",
+      "2 teaspoon baking powder",
+      "4 eggs",
+      "1 cup nuts",
+      "1 cup oil",
+      "1 - 1 lb. can pumpkin"
+    ],
+    "steps": [
+      {
+        "text": "Sift together all dry ingredients.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "Mix pumpkin and oil. Beat with electric mixer. Add nuts.",
+        "uses": [
+          7,
+          6,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Bake in loaf pan at 350°F for 1 hour 5 min.",
+        "timer": 65,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "spudnuts",
+    "title": "Spudnuts",
+    "emoji": "🍩",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "9 t. yeast (?)",
+      "4 cups scalded milk",
+      "1 T. salt",
+      "1 cup sugar",
+      "6 eggs",
+      "2 cups mashed potatoes",
+      "14-16 cups flour"
+    ],
+    "steps": [
+      {
+        "text": "Mix all ingredients together and let rise twice.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "text": "Roll out & cut. Let rise again, then fry in hot oil, turning once till brown.",
+        "uses": []
+      },
+      {
+        "text": "Glaze: powdered sugar, hot water, butter. Mix to suit consistency.",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "egg-salad",
+    "title": "Egg Salad",
+    "emoji": "🥚",
+    "category": "Salad",
+    "page": null,
+    "ingredients": [
+      "6 hard cooked eggs, peeled and coarsely chopped",
+      "¼ cup finely chopped celery",
+      "1 tablespoon grated onion",
+      "⅓ cup mayonnaise",
+      "¼ teasp. salt",
+      "¼ teasp. pepper",
+      "1 to 2 tablespoons milk or cream (if needed to moisten mixture)"
+    ],
+    "steps": [
+      {
+        "text": "Toss eggs, celery, onion, mayonnaise, salt & pepper lightly in a med. size bowl.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Cover, chill until ready to use.",
+        "uses": [
+          6
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "carrot-cake",
+    "title": "Carrot Cake with Cream Cheese Frosting",
+    "emoji": "🥕",
+    "category": "Dessert",
+    "page": null,
+    "servings": "10-12",
+    "ingredients": [
+      "1½ cups vegetable oil",
+      "1 cup white sugar",
+      "½ cup brown sugar",
+      "4 eggs",
+      "2 cups flour",
+      "2 teaspoons baking soda",
+      "2 teaspoons baking powder",
+      "2 teaspoons cinnamon",
+      "1 teaspoon salt",
+      "3 cups finely shredded carrots",
+      "1 cup chopped nuts, optional",
+      "Frosting: 1 (3 oz.) package cream cheese",
+      "Frosting: ½ stick margarine",
+      "Frosting: 2 teaspoons vanilla",
+      "Frosting: ½ box powdered sugar"
+    ],
+    "steps": [
+      {
+        "text": "Combine oil and sugars, beating until well blended.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Add eggs, one at a time, mixing well.",
+        "uses": [
+          3
+        ]
+      },
+      {
+        "text": "Sift dry ingredients together and add to batter gradually. Beat until smooth.",
+        "uses": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "text": "Add carrots and nuts. Beat ½ minute.",
+        "uses": [
+          9,
+          10
+        ]
+      },
+      {
+        "text": "Pour into a 13 x 9\" pan. Bake 45 minutes at 300° or until toothpick comes out clean. Cool.",
+        "timer": 45,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Frosting: cream butter and cream cheese together; add vanilla and sugar gradually. Beat until smooth. Frost cake.",
+        "uses": [
+          11,
+          12,
+          13,
+          14
+        ]
+      }
+    ],
+    "notes": "Serves 10-12."
+  },
+  {
+    "id": "applesauce-cake",
+    "title": "Applesauce Cake",
+    "emoji": "🍎",
+    "category": "Dessert",
+    "page": null,
+    "servings": "15",
+    "ingredients": [
+      "½ cup margarine",
+      "1 cup brown sugar",
+      "1 cup white sugar",
+      "1 egg",
+      "2 cups applesauce",
+      "2 teaspoons baking soda",
+      "2½ cups flour",
+      "2 teaspoons cinnamon",
+      "1 teaspoons cloves",
+      "½ teaspoon nutmeg",
+      "2 tablespoons unsweetened cocoa",
+      "1 teaspoon salt",
+      "1 cup nuts",
+      "1 cup raisins (optional)"
+    ],
+    "steps": [
+      {
+        "text": "Cream together margarine, brown sugar, white sugar, and egg.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "In a small bowl, combine applesauce and baking soda; then add to sugar mixture.",
+        "uses": [
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Sift together flour, cinnamon, cloves, nutmeg, cocoa and salt. Add to sugar mixture.",
+        "uses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "text": "Stir in nuts and raisins (optional).",
+        "uses": [
+          12,
+          13
+        ]
+      },
+      {
+        "text": "Bake in a greased 9x13\" or two 8\" round pans for 25-30 minutes at 350°. Frost with chocolate frosting, if desired.",
+        "timer": 30,
+        "timerLabel": "Bake",
+        "uses": []
+      }
+    ],
+    "notes": "Serves 15."
+  },
+  {
+    "id": "english-toffee",
+    "title": "English Toffee",
+    "emoji": "🍬",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "1 cup butter",
+      "1 cup sugar",
+      "¼ cup water",
+      "1 12 oz. pkg. chocolate chips",
+      "1 cup walnuts, chopped"
+    ],
+    "steps": [
+      {
+        "text": "Combine butter, sugar and water. Cook until mixture reaches hard crack stage (350°), stirring constantly.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Pour onto greased cookie sheet. Place chocolate chips on top. Press nuts on top.",
+        "uses": [
+          3,
+          4
+        ]
+      },
+      {
+        "text": "Cool and crack into small pieces.",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "sees-fudge",
+    "title": "See's Fudge",
+    "emoji": "🍫",
+    "category": "Dessert",
+    "page": null,
+    "servings": "24 pieces",
+    "ingredients": [
+      "2 cups sugar",
+      "⅔ cup evaporated milk",
+      "10 marshmallows",
+      "1 cup chopped nuts",
+      "1 cube margarine",
+      "1 teaspoon vanilla",
+      "6 oz. chocolate chips"
+    ],
+    "steps": [
+      {
+        "text": "In a heavy bottomed pan place: sugar, evaporated milk, marshmallows. In a bowl place: chopped nuts, margarine, vanilla, chocolate chips.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "text": "Bring pan ingredients to a boil. Boil for 7 minutes stirring constantly — be accurate of time.",
+        "timer": 7,
+        "timerLabel": "Boil",
+        "uses": []
+      },
+      {
+        "text": "Pour over contents of bowl and blend until smooth. Pour into lightly greased, foil lined 8-9\" square pan. Cool. Store and cut after pulling candy in foil from pan.",
+        "uses": []
+      }
+    ],
+    "notes": "Makes 24 pieces."
+  },
+  {
+    "id": "peanut-butter-cups",
+    "title": "Peanut Butter Cups",
+    "emoji": "🥜",
+    "category": "Dessert",
+    "page": null,
+    "servings": "3 dozen",
+    "ingredients": [
+      "1 cup powdered sugar",
+      "¾ cup peanut butter",
+      "2 tablespoons melted margarine",
+      "1 cup semi-sweet chocolate chips",
+      "2 tablespoons grated paraffin wax"
+    ],
+    "steps": [
+      {
+        "text": "Mix powdered sugar, peanut butter, and margarine together until well blended.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Melt chocolate chips and wax in the top of a double boiler.",
+        "uses": [
+          3,
+          4
+        ]
+      },
+      {
+        "text": "Form peanut butter mixture into ½ inch balls. With a small metal spoon dip each ball into melted chocolate, coating evenly, then place on wax paper to cool. If dipping chocolate becomes too thick, reheat, then continue dipping.",
+        "uses": []
+      },
+      {
+        "text": "Candies may be placed in paper candy cups and should be stored in the refrigerator.",
+        "uses": []
+      }
+    ],
+    "notes": "Makes 3 dozen."
+  },
+  {
+    "id": "cheesecake",
+    "title": "Cheesecake",
+    "emoji": "🍰",
+    "category": "Dessert",
+    "page": null,
+    "servings": "≈ 30",
+    "ingredients": [
+      "3 cups fine graham cracker crumbs",
+      "⅔ cups fine brown sugar",
+      "⅔ cups melted butter",
+      "1 teaspoon ground cinnamon",
+      "3 (9 oz.) pkgs. cream cheese",
+      "4 eggs",
+      "1 cup sugar",
+      "1 teaspoon vanilla extract",
+      "1 cup sour cream"
+    ],
+    "steps": [
+      {
+        "text": "Have cheese and eggs at room temperature. Mix first four ingredients well. Reserve 3 tablespoons of this mixture for topping. Press remainder of mixture into 2 8\" square cake pans with the back of a spoon.",
+        "uses": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "text": "Cream cheese until soft; add eggs, one at a time, beating well after each addition. Add sugar and vanilla, and beat until blended.",
+        "uses": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "text": "Pour into shell; bake 35 minutes at 350 until firm.",
+        "timer": 35,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Spread top with sour cream and sprinkle with reserved crumbs. Cool; then chill.",
+        "uses": [
+          8
+        ]
+      }
+    ],
+    "notes": "Serves approximately 30. Yields 2 8x8\" pans."
+  },
+  {
+    "id": "cake-with-strawberries",
+    "title": "Cake with Strawberries",
+    "emoji": "🍓",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "1 small box strawberry Jell-o",
+      "1 cup hot water",
+      "1 box frozen strawberries",
+      "1 large package Philadelphia Cream Cheese",
+      "1 cup sugar",
+      "1 package Dream Whip",
+      "1 large baked white cake"
+    ],
+    "steps": [
+      {
+        "text": "Mix Jello with 1 cup of hot water, then add the strawberries. Let mixture set a little.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Combine cheese and sugar, beat well then add 1 package of Dream Whip that has been beaten thoroughly. Stir together with Jello mixture.",
+        "uses": [
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "Bake one large white cake and break into pieces. Put the pieces into a large (13½ x 8¾\") pan and pour the above mixture over it. Use a fork and poke here and there to let the cream mixture through.",
+        "uses": [
+          6
+        ]
+      },
+      {
+        "text": "Put in the refrigerator overnight or several hours before serving.",
+        "uses": []
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "pina-colada-cake",
+    "title": "Piña Colada Cake",
+    "emoji": "🍍",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "8 oz. can of crushed pineapple, packed in its own juice",
+      "½ cup of flaked coconut",
+      "18½ oz. box pineapple flavored cake mix (not pudding added type)",
+      "4¾ oz. box instant vanilla pudding",
+      "4 eggs",
+      "½ cup cooking oil",
+      "½ cup of dark rum",
+      "½ cup cream of coconut",
+      "coconut (for garnish)",
+      "Rum Sauce: ¼ lb. butter",
+      "Rum Sauce: ⅓ cup sugar",
+      "Rum Sauce: 3 tablespoons pineapple juice (reserved from cake)",
+      "Rum Sauce: 3 tablespoons rum (dark)",
+      "Rum Sauce: 4 tablespoons cream of coconut"
+    ],
+    "steps": [
+      {
+        "text": "Drain pineapple, reserving juice. Mix pineapple with coconut and set aside.",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Grease and flour a 12 cup bundt pan and preheat oven to 350.",
+        "uses": []
+      },
+      {
+        "text": "Combine cake mix, pudding, eggs, oil, rum, and cream of coconut in a large mixing bowl and beat for 2 minutes with electric mixer at high speed. Fold in pineapple/coconut mixture.",
+        "uses": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "text": "Pour into prepared pan and bake for 1½ to 1¾ hours, checking occasionally from the hour mark on. Cake is done when it is nicely browned and a testing pick comes out clean.",
+        "timer": 105,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "While cake bakes, prepare rum sauce: in a small saucepan, combine butter, sugar and pineapple juice. Heat over low flame until butter melts and sugar dissolves. Bring to boil and boil for one minute. Remove from heat and let cool about 10 minutes. Stir in rum and cream of coconut.",
+        "timer": 10,
+        "timerLabel": "Cool sauce",
+        "uses": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      {
+        "text": "When cake is done, remove from oven, let cool only a short time, and punch holes in surface with fork or testing pick. Drizzle half of rum sauce over cake.",
+        "uses": []
+      },
+      {
+        "text": "Let cake cool in pan for another 15 minutes. Turn out on serving plate. Punch holes in top and upper sides and spoon remaining sauce over cake. Garnish with extra flaked coconut if you wish. Let cool completely before cutting.",
+        "timer": 15,
+        "timerLabel": "Cool",
+        "uses": [
+          8
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "banana-split-cake",
+    "title": "Banana Split Cake",
+    "emoji": "🍨",
+    "category": "Dessert",
+    "page": null,
+    "servings": "4-6",
+    "ingredients": [
+      "1 cup graham cracker crumbs",
+      "¼ cup melted butter or margarine",
+      "2 cups powdered sugar",
+      "½ cup butter or margarine",
+      "1 egg",
+      "3 bananas, sliced",
+      "1 (8 oz.) can crushed pineapple, drained",
+      "1 (9 oz.) carton of Cool Whip",
+      "½ cup of chopped nuts",
+      "5 maraschino cherries, halved"
+    ],
+    "steps": [
+      {
+        "text": "Mix graham cracker crumbs and ¼ cup butter or margarine together and press into the bottom of an 8x8x2\" square baking pan.",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Beat together powdered sugar, ½ cup butter or margarine and egg until smooth (about 10 minutes). Spread powdered sugar mixture on top of crust.",
+        "timer": 10,
+        "timerLabel": "Beat",
+        "uses": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "text": "Arrange bananas and pineapple over the mixture. Spread Cool Whip on top and garnish with chopped nuts and maraschino cherries.",
+        "uses": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "text": "Refrigerate several hours or overnight.",
+        "uses": []
+      }
+    ],
+    "notes": "Serves 4-6."
+  },
+  {
+    "id": "mississippi-mud-cake",
+    "title": "Mississippi Mud Cake",
+    "emoji": "🍫",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "4 eggs",
+      "2 cups sugar",
+      "2 cubes melted butter",
+      "1½ cups flour",
+      "⅓ cup cocoa",
+      "1 teaspoon vanilla",
+      "1 cup coconut",
+      "1-2 cups chopped nuts",
+      "1 (7 oz.) jar marshmallow creme",
+      "Frosting: 1 cube melted butter",
+      "Frosting: 6 tablespoons milk",
+      "Frosting: ⅓ cup cocoa",
+      "Frosting: 1 lb. powdered sugar (sifted)",
+      "Frosting: 1 teaspoon vanilla",
+      "Frosting: 1 cup nuts"
+    ],
+    "steps": [
+      {
+        "text": "Combine eggs and sugar, beat until thick.",
+        "uses": [
+          0,
+          1
+        ]
+      },
+      {
+        "text": "Combine melted butter, flour, cocoa, vanilla, coconut and nuts and add to eggs and sugar.",
+        "uses": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "text": "Pour into a greased and floured 9x13\" pan. Bake for about 30-40 minutes at 350.",
+        "timer": 40,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "When just out of the oven, spread marshmallow creme on top. Let cool, then frost.",
+        "uses": [
+          8
+        ]
+      },
+      {
+        "text": "To make frosting, melt butter, add milk, cocoa, powdered sugar and vanilla and beat well. Add nuts.",
+        "uses": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "cherry-chocolate-top",
+    "title": "Cherry Chocolate Top",
+    "emoji": "🍒",
+    "category": "Dessert",
+    "page": null,
+    "ingredients": [
+      "1 lb. powdered sugar",
+      "3 tablespoons cocoa",
+      "very light sprinkle salt",
+      "3 tablespoons maraschino cherry juice",
+      "1 whole egg",
+      "2 rounded teaspoons butter, soft",
+      "¼ teaspoon vanilla",
+      "1 cup maraschino cherries, cut in half",
+      "1 cup chopped nuts (walnuts or your choice)"
+    ],
+    "steps": [
+      {
+        "text": "Sift together in mixing bowl powdered sugar, cocoa, and salt at low speed; add cherry juice, egg, butter, and vanilla. Mix well at medium speed.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "text": "With wooden spoon, carefully stir in cherries and nuts.",
+        "uses": [
+          7,
+          8
+        ]
+      },
+      {
+        "text": "Spread mixture over cake immediately when it comes from the oven (heat from oven cooks the egg).",
+        "uses": []
+      }
+    ],
+    "notes": "Great on chocolate or devil's food cake baked in a brownie pan, cut in squares and left in the pan until serving. Makes enough for one cake."
+  },
+  {
+    "id": "oh-henry-bars",
+    "title": "Oh Henry Bars",
+    "emoji": "🍬",
+    "category": "Dessert",
+    "page": null,
+    "servings": "12-16",
+    "ingredients": [
+      "⅔ cups melted margarine",
+      "1 cup brown sugar",
+      "1 cup granulated sugar",
+      "4 cups oats",
+      "3 teaspoons vanilla",
+      "1 (6 oz.) pkg. chocolate chips",
+      "⅔ cup chunky peanut butter"
+    ],
+    "steps": [
+      {
+        "text": "Mix margarine, sugars, oats, and vanilla. Press into an 8 inch square greased baking pan.",
+        "uses": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "text": "Bake at 350 for 10 minutes.",
+        "timer": 10,
+        "timerLabel": "Bake",
+        "uses": []
+      },
+      {
+        "text": "Melt chocolate chips and peanut butter over boiling water or in the microwave. Spread over baked bars; cut while warm and refrigerate.",
+        "uses": [
+          5,
+          6
+        ]
+      }
+    ],
+    "notes": "Makes 12-16."
+  },
+  {
+    "id": "truffles",
+    "title": "Truffles",
+    "emoji": "🍫",
+    "category": "Dessert",
+    "page": null,
+    "servings": "4 dozen+",
+    "ingredients": [
+      "4 cups heavy cream",
+      "2½ lbs. bitter-sweet chocolate, chopped into small pieces",
+      "6 oz. sweet butter",
+      "½-1 cup liqueur"
+    ],
+    "steps": [
+      {
+        "text": "Simmer cream in saucepan until it boils. Remove from heat; add chocolate. Whisk in butter.",
+        "uses": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Divide batch and add different liqueurs for flavor.",
+        "uses": [
+          3
+        ]
+      },
+      {
+        "text": "Chill. Form into balls. Freeze. Dip in chocolate glaze. You can roll in powdered cocoa before freezing if you don't glaze.",
+        "uses": []
+      }
+    ],
+    "notes": "Makes 4 dozen+."
+  }
+]

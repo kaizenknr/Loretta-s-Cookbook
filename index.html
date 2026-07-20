@@ -384,6 +384,64 @@
   .ings li.ks-adj, #cook-ings-list li.ks-adj{ background:rgba(107,171,91,.09); border-radius:10px }
   .steps li.ks-adj{ box-shadow:inset 3px 0 0 #6bab5b; border-radius:10px }
 
+  /* ========== Premium motion ==========
+     Advanced, GPU-friendly (transform/opacity only) touches:
+     staggered scroll reveals, a FLIP shared-element hero, hero parallax,
+     a gradient "shine" on the masthead, and springy press states. */
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(16px) } to{ opacity:1; transform:none } }
+
+  /* staggered card reveal (driven by IntersectionObserver) */
+  body.anim .card{ opacity:0; transform:translateY(20px) scale(.985); }
+  body.anim .card.in{
+    opacity:1; transform:none;
+    transition:opacity .6s cubic-bezier(.2,.75,.25,1), transform .6s cubic-bezier(.2,.75,.25,1);
+    transition-delay:var(--d,0ms);
+    will-change:opacity, transform;
+  }
+  .card{ transition:box-shadow .25s ease, transform .16s cubic-bezier(.2,.7,.2,1) }
+  .card:active{ transform:scale(.955) !important; transition:transform .1s ease }
+
+  /* recipe content stagger (the hero itself is handled by the FLIP) */
+  #recipe-body.enter > :not(.hero){ animation:riseIn .5s cubic-bezier(.2,.75,.25,1) both }
+  #recipe-body.enter > :nth-child(2){ animation-delay:.05s }
+  #recipe-body.enter > :nth-child(3){ animation-delay:.10s }
+  #recipe-body.enter > :nth-child(4){ animation-delay:.15s }
+  #recipe-body.enter > :nth-child(5){ animation-delay:.20s }
+  #recipe-body.enter > :nth-child(6){ animation-delay:.25s }
+  #recipe-body.enter > :nth-child(7){ animation-delay:.30s }
+  #recipe-body.enter > :nth-child(n+8){ animation-delay:.34s }
+
+  /* hero parallax layer (kept separate so the FLIP can transform .hero) */
+  .hero-inner{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; will-change:transform }
+  .hero-inner img{ width:100%; height:100%; object-fit:cover }
+  .hero{ will-change:transform }
+
+  /* animated gradient "shine" sweeping across the masthead */
+  .masthead{
+    background:linear-gradient(100deg,
+      var(--accent-deep) 0 42%, #e79068 50%, var(--accent-deep) 58% 100%);
+    background-size:230% 100%; background-position:130% 0;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:shine 7s ease-in-out 1.2s infinite;
+  }
+  @keyframes shine{ 0%{ background-position:130% 0 } 55%,100%{ background-position:-30% 0 } }
+
+  /* springy press states */
+  .start-cook,.chip,.nm-yes,.back{ transition:transform .16s cubic-bezier(.2,.7,.2,1), background .2s ease, box-shadow .2s ease }
+  .start-cook:active{ transform:scale(.978) }
+  .chip:active{ transform:scale(.93) }
+  .nm-yes:active{ transform:scale(.97) }
+  .timer-btn{ transition:transform .14s ease, background .2s ease }
+  .timer-btn:active{ transform:scale(.96) }
+
+  @media (prefers-reduced-motion: reduce){
+    body.anim .card{ opacity:1 !important; transform:none !important }
+    #recipe-body.enter > *{ animation:none !important }
+    .masthead{ animation:none; background-position:-30% 0 }
+    .hero-inner{ transform:none !important }
+  }
+
   /* ---------- Splash screen ----------
      Branded launch screen that cross-dissolves into the app: as the splash
      eases out (with a soft scale), the app rises in beneath it. */
@@ -592,6 +650,51 @@ const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+/* ---- premium motion ---- */
+const REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+try{ document.body.classList.add('anim'); }catch(e){}
+let cardIO = null;
+/* Reveal cards with a stagger as they scroll into view (IntersectionObserver). */
+function revealCards(scope){
+  const cards = $$('.card', scope || document);
+  if(REDUCE || !('IntersectionObserver' in window)){ cards.forEach(c=>c.classList.add('in')); return; }
+  if(!cardIO){
+    cardIO = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); cardIO.unobserve(e.target); } });
+    }, { rootMargin:'0px 0px -6% 0px', threshold:.04 });
+  }
+  cards.forEach((c,i)=>{ c.style.setProperty('--d', Math.min(i,8)*45 + 'ms'); cardIO.observe(c); });
+  setTimeout(()=> cards.forEach(c=>c.classList.add('in')), 1700);   // safety: never leave one hidden
+}
+/* FLIP shared-element: the tapped card thumb morphs into the recipe hero. */
+let flipFrom = null;
+function flipHero(from){
+  const hero = $('#recipe-body .hero'); if(!hero || !from) return;
+  const to = hero.getBoundingClientRect();
+  if(!to.width) return;
+  const dx = (from.left + from.width/2) - (to.left + to.width/2);
+  const dy = (from.top + from.height/2) - (to.top + to.height/2);
+  const sx = from.width / to.width, sy = from.height / to.height;
+  hero.style.transformOrigin = 'center center';
+  hero.style.transform = `translate(${dx}px,${dy}px) scale(${sx},${sy})`;
+  hero.style.opacity = '.55';
+  hero.getBoundingClientRect();   // force reflow so the next change transitions
+  hero.style.transition = 'transform .52s cubic-bezier(.2,.8,.2,1), opacity .4s ease';
+  hero.style.transform = 'none';
+  hero.style.opacity = '1';
+  const done = ()=>{ hero.style.cssText = hero.style.cssText
+      .replace(/transform[^;]*;?/g,'').replace(/transition[^;]*;?/g,'')
+      .replace(/opacity[^;]*;?/g,'').replace(/transform-origin[^;]*;?/g,'');
+    hero.style.willChange = 'transform'; hero.removeEventListener('transitionend', done); };
+  hero.addEventListener('transitionend', done);
+  setTimeout(done, 720);
+}
+/* Stagger the recipe body content in. */
+function enterRecipeContent(){
+  const b = $('#recipe-body'); if(!b || REDUCE) return;
+  b.classList.remove('enter'); void b.offsetWidth; b.classList.add('enter');
+}
+
 /* ---- progress persistence ---- */
 function loadProg(id){ try{ return JSON.parse(localStorage.getItem('lc:prog:'+id)) || {ing:{},step:{}}; }catch(e){ return {ing:{},step:{}}; } }
 function saveProg(id, p){ try{ localStorage.setItem('lc:prog:'+id, JSON.stringify(p)); }catch(e){} }
@@ -651,7 +754,7 @@ function renderGrid(){
     return;
   }
   grid.innerHTML = ready.map(r => `
-    <button class="card" onclick="openRecipe('${r.id}')">
+    <button class="card" onclick="openRecipe('${r.id}', event)">
       <div class="thumb">${r.image ? `<img src="${r.image}" alt="">` : (r.emoji||'🍽️')}</div>
       <div class="body">
         <h3>${esc(r.title)}</h3>
@@ -662,6 +765,7 @@ function renderGrid(){
       </div>
     </button>
   `).join('');
+  revealCards(grid);
 }
 
 /* Locked "teaser" cards for recipes whose availableAt is still in the future. */
@@ -680,13 +784,19 @@ function renderSoon(upcoming){
       </div>
     </div>
   `).join('');
+  revealCards(sgrid);
 }
 
 /* ---- recipe view ---- */
 let currentRecipe = null;
-function openRecipe(id){
+function openRecipe(id, ev){
   const r = RECIPES.find(x => x.id===id);
   if(!r || !isAvailable(r)) return;   // locked drops aren't openable yet
+  try{
+    const card = ev && ev.currentTarget;
+    const thumb = card && card.querySelector('.thumb');
+    flipFrom = (thumb && !REDUCE) ? thumb.getBoundingClientRect() : null;   // for the FLIP hero
+  }catch(e){ flipFrom = null; }
   location.hash = '#/r/'+id;
 }
 function goHome(){ location.hash = ''; }
@@ -740,7 +850,7 @@ function renderRecipe(r){
         <span class="ks-ic">💚</span>
         <div class="ks-labels">
           <b>Kidney-safe version</b>
-          <small>${KIDNEY ? 'Showing lower-sodium swaps' : 'Adjust this recipe for her kidney diet'}</small>
+          <small>${KIDNEY ? 'Lower sodium &amp; phosphate' : 'Adjust this recipe for her kidney diet'}</small>
         </div>
         <button class="ks-switch" role="switch" aria-checked="${KIDNEY}" aria-label="Kidney-safe version" onclick="toggleKidney()"><span class="knob"></span></button>
       </div>
@@ -749,7 +859,7 @@ function renderRecipe(r){
     </div>`;
 
   $('#recipe-body').innerHTML = `
-    <div class="hero gingham">${r.image ? `<img src="${r.image}" alt="">` : (r.emoji||'🍽️')}</div>
+    <div class="hero gingham"><div class="hero-inner">${r.image ? `<img src="${r.image}" alt="">` : (r.emoji||'🍽️')}</div></div>
     <div class="r-head">
       ${r.category?`<div class="r-cat">${esc(r.category)}</div>`:''}
       <h1>${esc(r.title)}</h1>
@@ -1212,6 +1322,8 @@ function route(){
       $('#view-home').classList.remove('active');
       $('#view-recipe').classList.add('active');
       window.scrollTo(0,0);
+      if(flipFrom){ flipHero(flipFrom); flipFrom = null; }   // card thumb → hero morph
+      enterRecipeContent();
       manageWake();
       return;
     }
@@ -1224,10 +1336,21 @@ function route(){
 }
 window.addEventListener('hashchange', route);
 
-/* ---- topbar scroll state ---- */
+/* ---- topbar scroll state + hero parallax ---- */
+let parallaxRAF = 0;
 window.addEventListener('scroll', ()=>{
   const tb = $('#topbar');
   if(tb) tb.classList.toggle('scrolled', window.scrollY>140);
+  if(!REDUCE && !parallaxRAF){
+    parallaxRAF = requestAnimationFrame(()=>{
+      parallaxRAF = 0;
+      const hi = $('#recipe-body .hero-inner');
+      if(hi && $('#view-recipe').classList.contains('active')){
+        const y = Math.min(Math.max(window.scrollY,0), 320);
+        hi.style.transform = `translateY(${(y*0.28).toFixed(1)}px) scale(${(1 + y*0.0007).toFixed(3)})`;
+      }
+    });
+  }
 }, {passive:true});
 
 /* ---- Add to Home Screen banner (iOS Safari only, not already installed) ---- */

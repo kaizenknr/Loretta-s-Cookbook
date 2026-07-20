@@ -4,7 +4,7 @@
    - recipes.json: network-first (so newly dropped recipes appear when online),
      falling back to the cached copy when offline.
    Bump CACHE_VERSION whenever you change index.html or the icons. */
-const CACHE_VERSION = 'lc-v6';
+const CACHE_VERSION = 'lc-v7';
 const SHELL = [
   './',
   './index.html',

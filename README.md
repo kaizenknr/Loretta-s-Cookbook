@@ -43,6 +43,23 @@ commit, and redeploy. Each recipe:
 - `steps[].uses` → which ingredient indices that step uses, so they **cross off** as the
   cook advances. (Or just send Claude the recipe photos and it fills all of this in.)
 
+### Kidney-safe version
+Each recipe can carry an optional `kidneySafe` block. A toggle on the recipe page switches
+to this near-identical version (lower-sodium swaps + flags), and the choice is remembered.
+```jsonc
+"kidneySafe": {
+  "note": "Lowered the added salt … Higher in potassium: potatoes — ask her dietitian.",
+  "ingredients": { "3": "1 t. salt → reduce or leave out; season with herbs & pepper" },
+  "steps": { "2": "…optional replacement step text…" }
+}
+```
+- Keys in `ingredients`/`steps` are the **0-based index** of the line to replace, so
+  everything else (and the `uses` cross-off, timers, cooking mode) stays identical.
+- Only the listed lines change; changed lines show an **"adjusted"** tag.
+- **These are general lower-sodium suggestions and ingredient flags, not medical advice.**
+  The app shows a note asking to confirm with her doctor / renal dietitian. Tailor the
+  `kidneySafe` text per her care team's guidance (potassium/phosphorus limits vary by person).
+
 ### Scheduling a "drop"
 Add two optional fields to any recipe to make it appear as a locked **teaser** until
 its time arrives, then unlock automatically:
@@ -62,6 +79,8 @@ push is set up (below), Mom gets a notification.
 - ⏱️ Timers with alarm + buzz; **progress and running timers persist** on the phone
 - 🔍 Search + category filters (Bread, Vegetable, Dessert, Main Dish, …)
 - 📴 Works fully offline once added to the Home Screen; 🌙 light + dark
+- 💚 **Kidney-safe toggle** — per-recipe switch to a near-identical, lower-sodium version with
+  dietitian flags (general guidance, not medical advice)
 - ✨ **Scheduled drops** — new recipes appear as locked teasers and unlock at their `availableAt`
 - 🔔 **Push notifications** (optional server) — a ping when a recipe drops, and when a cooking
   timer finishes even if Mom has left the app

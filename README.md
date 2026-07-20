@@ -17,8 +17,12 @@ python3 -m http.server 8000
 Push this folder to your repo, import it in Vercel as a **static site** (no build step),
 and share the URL. On the iPhone: **Safari → Share → Add to Home Screen**. It then opens
 full-screen like a native app and works with no signal.
-> When you change `index.html` or the icons, bump `CACHE_VERSION` in `sw.js` so the
-> installed app picks up the new version. Recipe changes don't need that.
+> **Auto-updates:** the installed Home Screen app now checks for a new version on every
+> open (and every time it's refocused), and quietly reloads to the latest — no more getting
+> stuck on an old build. The HTML/`sw.js`/`recipes.json` are served `no-cache` (see
+> `vercel.json`) and the service worker is network-first, so a deploy shows up on the next
+> launch. Bumping `CACHE_VERSION` in `sw.js` is still nice for busting the cached icons/splash,
+> but no longer required for code changes to appear.
 
 ## Adding / editing recipes
 All recipes live in **`recipes.json`** — edit that file (the app reads it at runtime),

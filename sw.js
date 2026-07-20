@@ -1,10 +1,11 @@
 /* Loretta's Cookbook — service worker
-   Makes the app work fully offline once installed, so it never "goes down."
-   - App shell (HTML/icons/manifest): cache-first.
-   - recipes.json: network-first (so newly dropped recipes appear when online),
-     falling back to the cached copy when offline.
-   Bump CACHE_VERSION whenever you change index.html or the icons. */
-const CACHE_VERSION = 'lc-v7';
+   Works fully offline once installed, but always prefers the latest online:
+   - The app HTML (navigations): network-first, HTTP-cache bypassed, so a new
+     deploy shows up on the very next open. Cache is only the offline fallback.
+   - recipes.json: network-first (new drops appear), cached as fallback.
+   - icons/splash: cache-first (they rarely change; CACHE_VERSION busts them).
+   The page also auto-activates a new worker and reloads (see index.html). */
+const CACHE_VERSION = 'lc-v8';
 const SHELL = [
   './',
   './index.html',
@@ -29,6 +30,11 @@ self.addEventListener('activate', (e) => {
   );
 });
 
+// Let the page tell a freshly-installed worker to take over immediately.
+self.addEventListener('message', (e) => {
+  if (e.data === 'SKIP_WAITING') self.skipWaiting();
+});
+
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
@@ -48,9 +54,18 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // navigations — serve app shell so deep links / offline still load
+  // navigations (the app HTML) — network-first, bypassing the HTTP cache so a new
+  // deploy is always picked up; fall back to cache only when offline.
   if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).catch(() => caches.match('./index.html')));
+    e.respondWith(
+      fetch(req, { cache: 'no-store' })
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE_VERSION).then((c) => c.put('./index.html', copy));
+          return res;
+        })
+        .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html')))
+    );
     return;
   }
 

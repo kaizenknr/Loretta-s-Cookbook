@@ -85,7 +85,31 @@ Key fields:
 
 ---
 
-## 6. TO BUILD NEXT — Admin app + scheduled drops + notifications
+## 6. Scheduled drops + notifications
+
+> **STATUS UPDATE:** the *client* drop support (§6b) and the *push notification server*
+> (§6c) are now **BUILT**. What's still open is the optional **local admin app** (§6a) —
+> for now you edit `recipes.json` by hand (add `availableAt` + `teaser`), commit, and push.
+>
+> **What now exists:**
+> - **Client (`index.html`)** — recipes with a future `availableAt` render as locked
+>   "Coming soon" teaser cards (blurred icon + `teaser`), are not openable, and unlock
+>   automatically (30s interval + on `visibilitychange`). A "🔔 Turn on" banner lets Mom
+>   opt into push; starting a step timer also registers a background push so the alert
+>   lands if she leaves the app.
+> - **`sw.js`** — now has `push` + `notificationclick` handlers.
+> - **`api/`** — Vercel serverless functions:
+>   `vapid-public-key` (hands the client the key), `subscribe` (stores/removes a device),
+>   `schedule-timer` (queues/cancels a background cooking-timer push), and `cron`
+>   (runs every minute per `vercel.json`: announces due drops once, fires due timers).
+>   Shared helpers in `api/_lib/` (`store.js` = Vercel KV, `push.js` = web-push).
+> - **Setup:** `npm run generate-vapid`, set `VAPID_*` env vars, connect a Vercel **KV**
+>   store, redeploy. See README "Notifications" + `.env.example`. If the keys/KV aren't
+>   set, every push path no-ops and the app runs as a plain offline cookbook.
+>
+> The rest of this section is the original design spec, kept for reference.
+
+### TO BUILD NEXT — Admin app + scheduled drops + notifications
 
 ### 6a. Local admin app (runs on your computer)
 Goal: you send/drop in recipe photos, it transcribes → appends to `recipes.json`,

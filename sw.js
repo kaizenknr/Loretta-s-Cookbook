@@ -4,7 +4,7 @@
    - recipes.json: network-first (so newly dropped recipes appear when online),
      falling back to the cached copy when offline.
    Bump CACHE_VERSION whenever you change index.html or the icons. */
-const CACHE_VERSION = 'lc-v1';
+const CACHE_VERSION = 'lc-v2';
 const SHELL = [
   './',
   './index.html',
@@ -55,4 +55,36 @@ self.addEventListener('fetch', (e) => {
 
   // everything else — cache-first
   e.respondWith(caches.match(req).then((hit) => hit || fetch(req)));
+});
+
+/* ---- Web Push: recipe drops + background cooking-timer alerts ----
+   The server (see /api and HANDOFF.md §6c) sends a JSON payload:
+   { title, body, url, tag }. Shows the notification even when the app
+   is closed; tapping it focuses/opens the app. */
+self.addEventListener('push', (e) => {
+  let d = {};
+  try { d = e.data ? e.data.json() : {}; } catch (_) { d = { body: e.data && e.data.text() }; }
+  const title = d.title || "Loretta's Cookbook";
+  const opts = {
+    body: d.body || '',
+    icon: 'icon-192.png',
+    badge: 'icon-192.png',
+    tag: d.tag || undefined,
+    renotify: !!d.tag,
+    data: { url: d.url || './' }
+  };
+  e.waitUntil(self.registration.showNotification(title, opts));
+});
+
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  const target = (e.notification.data && e.notification.data.url) || './';
+  e.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((wins) => {
+      for (const w of wins) {
+        if ('focus' in w) { w.focus(); if (w.navigate && target !== './') w.navigate(target); return; }
+      }
+      return self.clients.openWindow(target);
+    })
+  );
 });

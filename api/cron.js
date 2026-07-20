@@ -18,7 +18,10 @@ const { pushReady, sendTo, sendToMany } = require('./_lib/push');
 
 // Only announce a drop if its time arrived within this window, so freshly
 // configured deployments don't blast out every past-dated recipe at once.
-const DROP_GRACE_MS = 6 * 60 * 60 * 1000; // 6 hours
+// Sized to comfortably exceed the cron interval: on Vercel Hobby the cron
+// runs once a day, so a >24h window guarantees each daily run still catches
+// the drops from the previous day. On Pro (per-minute cron) it's harmless.
+const DROP_GRACE_MS = 26 * 60 * 60 * 1000; // 26 hours
 
 async function loadRecipes() {
   const host = process.env.VERCEL_URL;

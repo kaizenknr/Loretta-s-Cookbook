@@ -345,26 +345,42 @@
   #cook-ings-list li.done{ color:var(--muted); text-decoration:line-through }
 
   .view{ display:none }
-  .view.active{ display:block; animation:fade .18s ease }
+  .view.active{ display:block; animation:viewIn .34s cubic-bezier(.4,0,.2,1) both }
+  @keyframes viewIn{ from{ opacity:0; transform:translateY(6px) } to{ opacity:1; transform:none } }
   @keyframes fade{ from{ opacity:0 } to{ opacity:1 } }
+  @media (prefers-reduced-motion: reduce){ .view.active{ animation:fade .2s linear } }
 
   /* ---------- Splash screen ----------
-     A simple branded splash shown on launch, then fades to reveal the app. */
+     Branded launch screen that cross-dissolves into the app: as the splash
+     eases out (with a soft scale), the app rises in beneath it. */
   #splash{
     position:fixed; inset:0; z-index:9999;
     display:flex; align-items:center; justify-content:center;
     background:#f6f1e4;
     padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
-    transition:opacity .5s ease;
+    opacity:1; transition:opacity .66s cubic-bezier(.4,0,.2,1);
+    will-change:opacity;
   }
   #splash.hide{ opacity:0; pointer-events:none; }
   #splash .splash-img{
     height:min(86vh, 640px); max-width:94vw;
     width:auto; object-fit:contain; display:block;
-    animation:splashIn .5s ease both;
+    animation:splashIn .7s cubic-bezier(.22,.68,.24,1) both;
+    transition:transform .66s cubic-bezier(.4,0,.2,1), filter .66s cubic-bezier(.4,0,.2,1);
+    will-change:transform, opacity;
   }
-  @keyframes splashIn{ from{ opacity:0; transform:scale(.94) } to{ opacity:1; transform:none } }
-  @media (prefers-reduced-motion: reduce){ #splash .splash-img{ animation:none } }
+  #splash.hide .splash-img{ transform:scale(1.045); filter:blur(1.5px); }
+  @keyframes splashIn{ from{ opacity:0; transform:scale(.965) } to{ opacity:1; transform:none } }
+
+  /* app rises/fades in as the splash lifts away (one-time, on reveal) */
+  .app.reveal{ animation:appReveal .66s cubic-bezier(.4,0,.2,1) both; }
+  @keyframes appReveal{ from{ opacity:0; transform:translateY(12px) } to{ opacity:1; transform:none } }
+
+  @media (prefers-reduced-motion: reduce){
+    #splash, #splash .splash-img{ transition:opacity .3s linear; animation:none; }
+    #splash.hide .splash-img{ transform:none; filter:none; }
+    .app.reveal{ animation:none; }
+  }
 
 
   /* ---------- Coming soon (scheduled drops) ---------- */
@@ -1159,8 +1175,10 @@ let splashHidden = false;
 function hideSplash(){
   if(splashHidden) return; splashHidden = true;
   const s = $('#splash'); if(!s) return;
-  s.classList.add('hide');
-  setTimeout(()=>{ s.remove(); }, 600);
+  const app = document.querySelector('.app');
+  if(app) app.classList.add('reveal');   // app rises in as the splash lifts away
+  requestAnimationFrame(()=> s.classList.add('hide'));
+  setTimeout(()=>{ s.remove(); }, 720);   // matches the .66s cross-dissolve
 }
 function scheduleSplashHide(){
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

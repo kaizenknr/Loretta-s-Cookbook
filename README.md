@@ -91,8 +91,14 @@ push is set up (below), Mom gets a notification.
 `scripts/generate-vapid.js` (key setup) · **`HANDOFF.md`** (full architecture notes).
 
 ## Notifications (optional — the whole app works without this)
-The static site runs on its own. To also alert Mom about drops and background timers you
-add three env vars and a KV store on Vercel; without them the app silently skips push.
+The app asks for notification permission with a **pop-up reminder** on launch (whenever it's
+not already enabled), so timer-done alerts reach Mom even after she leaves the app. On iOS this
+only works once the app is **Added to Home Screen** (system requirement) — before that the
+pop-up won't appear. If she taps "Not now" it re-asks a few days later.
+
+Those local timer alerts work with **no server**. To *also* push **recipe drops** and
+**background** timer alerts (when the app is fully closed), add three env vars and a KV store
+on Vercel; without them the app silently skips the server push and keeps the local alerts.
 
 1. `npm install`
 2. `npm run generate-vapid` → paste `VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY` / `VAPID_SUBJECT`
@@ -101,7 +107,7 @@ add three env vars and a KV store on Vercel; without them the app silently skips
    (injects `KV_REST_API_URL` / `KV_REST_API_TOKEN`).
 4. Redeploy. `vercel.json` runs `/api/cron` every minute to deliver drops + due timers.
 5. On the iPhone the app must be **Added to Home Screen** (iOS requirement for web push);
-   open it and tap **Turn on** when the notification banner appears.
+   open it and tap **Turn on notifications** when the reminder pops up.
 
 > iOS can't fire a scheduled/background notification from a web app without this push server —
 > that's why the timer-finished and drop alerts route through `/api`. Details in **HANDOFF.md §6**.

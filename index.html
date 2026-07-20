@@ -437,20 +437,36 @@
   }
   .teaser{ margin:7px 0 0; font-family:var(--serif); font-style:italic; font-size:13.5px; color:var(--ink-soft); line-height:1.35; }
 
-  /* ---------- Notify (recipe-drop push) ---------- */
-  .notify-cta{
-    display:none; margin:2px 20px 4px; padding:12px 14px; align-items:center; gap:11px;
-    background:var(--blue-soft); border:1.5px solid var(--blue-trim); border-radius:14px;
+  /* ---------- Notification permission reminder (pop-up) ---------- */
+  #notify-modal{
+    position:fixed; inset:0; z-index:10000;
+    display:none; align-items:flex-end; justify-content:center;
+    background:rgba(50,35,25,.42); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);
+    padding:16px calc(16px + env(safe-area-inset-right)) calc(16px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
   }
-  .notify-cta.show{ display:flex; }
-  .notify-cta .bell{ font-size:20px; line-height:1; }
-  .notify-cta .txt{ flex:1; font-size:13.5px; color:var(--blue-ink); }
-  .notify-cta .txt b{ display:block; font-size:14.5px; }
-  .notify-cta button{
-    background:var(--blue-solid); color:#fff; font-weight:700; font-size:13.5px;
-    border-radius:999px; padding:8px 14px; white-space:nowrap;
+  #notify-modal.show{ display:flex; animation:nmFade .28s ease both; }
+  @keyframes nmFade{ from{ opacity:0 } to{ opacity:1 } }
+  .nm-card{
+    width:100%; max-width:420px; background:var(--card); border-radius:22px;
+    padding:24px 22px calc(20px + env(safe-area-inset-bottom)); text-align:center;
+    box-shadow:var(--shadow-lg); border:1.5px solid var(--line);
+    animation:nmRise .34s cubic-bezier(.2,.9,.25,1) both;
   }
-  .notify-cta button.ghost{ background:transparent; color:var(--blue-ink); padding:8px 6px; }
+  @media (min-width:520px){ #notify-modal{ align-items:center } }
+  @keyframes nmRise{ from{ opacity:0; transform:translateY(16px) scale(.98) } to{ opacity:1; transform:none } }
+  .nm-bell{
+    width:64px; height:64px; margin:0 auto 12px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:30px;
+    background:var(--blue-soft); box-shadow:inset 0 0 0 1.5px var(--blue-trim);
+  }
+  .nm-card h2{ font-family:var(--serif); font-size:22px; margin:0 0 8px; color:var(--ink) }
+  .nm-card p{ font-size:14.5px; line-height:1.5; color:var(--ink-soft); margin:0 auto 20px; max-width:320px }
+  .nm-acts{ display:flex; flex-direction:column; gap:10px }
+  .nm-yes{
+    background:var(--accent); color:#fff; font-weight:700; font-size:16px;
+    padding:14px; border-radius:14px; box-shadow:var(--shadow);
+  }
+  .nm-no{ color:var(--ink-soft); font-weight:600; font-size:15px; padding:10px }
 </style>
 </head>
 <body>
@@ -473,12 +489,6 @@
       <input id="search" type="search" placeholder="Search recipes or ingredients" autocomplete="off" />
     </div>
     <div class="chips" id="chips"></div>
-    <div class="notify-cta" id="notify-cta">
-      <span class="bell">🔔</span>
-      <span class="txt"><b>Get a ping for new recipes</b>Loretta will drop a new one now and then.</span>
-      <button onclick="enablePush()">Turn on</button>
-      <button class="ghost" onclick="dismissNotifyCta()">Not now</button>
-    </div>
     <div class="soon-wrap" id="soon" style="display:none">
       <div class="soon-head"><span class="spark">✨</span> Coming soon</div>
       <div class="grid" id="soon-grid"></div>
@@ -503,6 +513,19 @@
 </div>
 
 <div id="tray"></div>
+
+<!-- Notification permission reminder -->
+<div id="notify-modal" role="dialog" aria-modal="true" aria-labelledby="nm-title">
+  <div class="nm-card">
+    <div class="nm-bell">🔔</div>
+    <h2 id="nm-title">Turn on notifications?</h2>
+    <p>So you get an alert the moment a cooking timer finishes — even if you've left the app — and when a new recipe drops.</p>
+    <div class="nm-acts">
+      <button class="nm-yes" onclick="enableNotifications()">Turn on notifications</button>
+      <button class="nm-no" onclick="snoozeNotify()">Not now</button>
+    </div>
+  </div>
+</div>
 
 <!-- COOKING MODE -->
 <div id="cookmode">
@@ -939,35 +962,35 @@ async function subscribeForPush(){
     return sub;
   }catch(e){ return null; }
 }
-/* Called from the "Turn on" button. Asks permission, then subscribes. */
-async function enablePush(){
-  hideNotifyCta();
-  try{
-    if(Notification.permission==='default'){
-      const p = await Notification.requestPermission();
-      if(p!=='granted'){ localStorage.setItem('lc:notify-cta','dismissed'); return; }
-    }
-    if(Notification.permission!=='granted'){ localStorage.setItem('lc:notify-cta','dismissed'); return; }
-    const sub = await subscribeForPush();
-    if(sub) localStorage.setItem('lc:notify-cta','enabled');
-  }catch(e){}
+/* ---- Notification permission reminder (pop-up) ----
+   A friendly prompt asking to allow notifications so timer-done alerts (and
+   recipe drops) can reach her. The actual permission request runs on the
+   button tap — required by Safari, which only grants it on a user gesture.
+   Works even with no push server: the OS still shows timer alerts. */
+function showNotifyModal(){ const m=$('#notify-modal'); if(m) m.classList.add('show'); }
+function closeNotifyModal(){ const m=$('#notify-modal'); if(m) m.classList.remove('show'); }
+function snoozeNotify(){
+  try{ localStorage.setItem('lc:notify-snooze', String(Date.now()+3*24*3600*1000)); }catch(e){}
+  closeNotifyModal();
 }
-function hideNotifyCta(){ const el=$('#notify-cta'); if(el) el.classList.remove('show'); }
-function dismissNotifyCta(){ localStorage.setItem('lc:notify-cta','dismissed'); hideNotifyCta(); }
-/* Show the opt-in banner only when push can actually work and Mom hasn't chosen yet. */
-async function maybeShowNotifyCta(){
-  const el = $('#notify-cta'); if(!el) return;
-  if(localStorage.getItem('lc:notify-cta')) return;          // already enabled/dismissed
-  if(!pushSupported()) return;
-  if(Notification.permission==='denied') return;
-  if(!isStandalone() && /iphone|ipad|ipod/i.test(navigator.userAgent)) return; // iOS push needs A2HS
-  const key = await getVapidKey();
-  if(!key) return;                                            // server not set up
-  if(Notification.permission==='granted'){
-    await subscribeForPush();                                 // already allowed → just (re)register
-    return;
-  }
-  setTimeout(()=> el.classList.add('show'), 1600);
+async function enableNotifications(){
+  try{
+    let perm = Notification.permission;
+    if(perm==='default') perm = await Notification.requestPermission();
+    if(perm==='granted'){ subscribeForPush(); }   // best-effort push register (no-op without a server)
+    else { snoozeNotify(); return; }              // dismissed/denied — remind again later
+  }catch(e){}
+  closeNotifyModal();
+}
+/* Decide whether to show the reminder on launch. */
+function maybePromptNotify(){
+  if(!('Notification' in window)) return;               // unsupported (e.g. iOS Safari tab before install)
+  const perm = Notification.permission;
+  if(perm==='granted'){ subscribeForPush(); return; }   // already on → just (re)register for push
+  if(perm==='denied') return;                           // can't re-prompt; respect their choice
+  let snooze = 0; try{ snooze = +(localStorage.getItem('lc:notify-snooze')||0); }catch(e){}
+  if(Date.now() < snooze) return;                       // recently said "not now"
+  showNotifyModal();
 }
 /* Ask the server to fire a push when a cooking timer ends, so Mom gets the
    ping even if she's left the app (iOS suspends in-page timers). Best effort. */
@@ -1278,12 +1301,10 @@ document.addEventListener('visibilitychange', ()=>{
 });
 
 if('serviceWorker' in navigator){
-  window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('sw.js')
-      .then(()=> maybeShowNotifyCta())
-      .catch(()=>{});
-  });
+  window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); });
 }
+/* Remind Mom to enable notifications shortly after the app appears (after the splash). */
+setTimeout(maybePromptNotify, SPLASH_MIN_MS + 900);
 </script>
 </body>
 </html>

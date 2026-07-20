@@ -48,7 +48,7 @@ Each recipe can carry an optional `kidneySafe` block. A toggle on the recipe pag
 to this near-identical version (lower-sodium swaps + flags), and the choice is remembered.
 ```jsonc
 "kidneySafe": {
-  "note": "Lowered the added salt … Higher in potassium: potatoes — ask her dietitian.",
+  "note": "Sodium and phosphates are the two to keep low here. Cut the added salt …",
   "ingredients": { "3": "1 t. salt → reduce or leave out; season with herbs & pepper" },
   "steps": { "2": "…optional replacement step text…" }
 }
@@ -56,9 +56,12 @@ to this near-identical version (lower-sodium swaps + flags), and the choice is r
 - Keys in `ingredients`/`steps` are the **0-based index** of the line to replace, so
   everything else (and the `uses` cross-off, timers, cooking mode) stays identical.
 - Only the listed lines change; changed lines show an **"adjusted"** tag.
-- **These are general lower-sodium suggestions and ingredient flags, not medical advice.**
-  The app shows a note asking to confirm with her doctor / renal dietitian. Tailor the
-  `kidneySafe` text per her care team's guidance (potassium/phosphorus limits vary by person).
+- Focused on the two she must keep low — **sodium and phosphates**: lower-salt swaps,
+  low-sodium soy sauce, phosphate-free baking powder, and flags on cured meats, dairy,
+  nuts, cola, whole grains and packaged mixes.
+- **These are general suggestions and ingredient flags, not medical advice.** The app shows
+  a note asking to confirm with her doctor / renal dietitian. Tailor the `kidneySafe` text
+  per her care team's guidance.
 
 ### Scheduling a "drop"
 Add two optional fields to any recipe to make it appear as a locked **teaser** until
@@ -79,7 +82,7 @@ push is set up (below), Mom gets a notification.
 - ⏱️ Timers with alarm + buzz; **progress and running timers persist** on the phone
 - 🔍 Search + category filters (Bread, Vegetable, Dessert, Main Dish, …)
 - 📴 Works fully offline once added to the Home Screen; 🌙 light + dark
-- 💚 **Kidney-safe toggle** — per-recipe switch to a near-identical, lower-sodium version with
+- 💚 **Kidney-safe toggle** — per-recipe switch to a near-identical, lower-sodium & phosphate version with
   dietitian flags (general guidance, not medical advice)
 - ✨ **Scheduled drops** — new recipes appear as locked teasers and unlock at their `availableAt`
 - 🔔 **Push notifications** (optional server) — a ping when a recipe drops, and when a cooking

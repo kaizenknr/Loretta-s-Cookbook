@@ -87,6 +87,21 @@ add three env vars and a KV store on Vercel; without them the app silently skips
 > iOS can't fire a scheduled/background notification from a web app without this push server —
 > that's why the timer-finished and drop alerts route through `/api`. Details in **HANDOFF.md §6**.
 
+### Cron frequency & your Vercel plan
+`vercel.json` runs `/api/cron` on a schedule to deliver drop announcements and background
+timer pings. It ships set to **once a day** (`0 16 * * *`) so it deploys on the **Hobby**
+(free) plan, where cron runs at most daily.
+
+- Scheduled **drops** still *unlock in the app exactly on time* (that's client-side); only
+  the push *announcement* waits for the next daily cron run — the server catches any drop
+  from the past ~26h.
+- Background **cooking-timer** pings (a ping while Mom is in another app) need a frequent
+  cron, so they effectively require **Vercel Pro**. On Hobby, timers still alarm normally
+  while the app is open.
+
+On **Pro**, change the schedule in `vercel.json` to `"* * * * *"` (every minute) for prompt
+drop announcements and working background timers, then redeploy.
+
 ## What's next
 See **HANDOFF.md** — the local admin app that schedules recipe "drops" with teasers, and
 the push-notification system (the only way iOS can alert Mom in the background).

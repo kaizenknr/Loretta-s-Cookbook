@@ -11,12 +11,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-title" content="Cookbook" />
 <meta name="theme-color" content="#f6f1e4" />
+<meta name="color-scheme" content="light only" />
 <link rel="manifest" href="manifest.json" />
 <link rel="apple-touch-icon" href="icon.png" />
 <link rel="icon" href="icon-192.png" />
 
 <style>
   :root{
+    color-scheme:light;          /* always light — never the OS dark theme */
     --bg:#f6f1e4;                /* warm cream (matches the logo/splash) */
     --bg-2:#efe7d5;
     --card:#fffdf7;              /* soft ivory cards, pop against the cream */
@@ -42,27 +44,6 @@
     --safe-top:env(safe-area-inset-top,0px);
     --safe-bottom:env(safe-area-inset-bottom,0px);
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#241d17;
-      --bg-2:#2b231b;
-      --card:#2e2519;
-      --ink:#f3e7d2;
-      --ink-soft:#cdba9f;
-      --muted:#a2917c;
-      --line:#40341f;
-      --accent:#e0705f;
-      --accent-deep:#e0705f;
-      --accent-soft:#3f2a24;
-      --blue:120,168,196;
-      --blue-solid:#6f9fbb;
-      --blue-trim:#4e788e;
-      --blue-soft:#2a3941;
-      --blue-ink:#a5cade;
-      --shadow:0 6px 18px rgba(0,0,0,.35);
-      --shadow-lg:0 14px 36px rgba(0,0,0,.5);
-    }
-  }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
   body{
@@ -82,9 +63,6 @@
     background-image:
       repeating-linear-gradient(0deg,  rgba(var(--blue),.5) 0 12px, rgba(var(--blue),0) 12px 24px),
       repeating-linear-gradient(90deg, rgba(var(--blue),.5) 0 12px, rgba(var(--blue),0) 12px 24px);
-  }
-  @media (prefers-color-scheme: dark){
-    .gingham{ background-color:#26313a; }
   }
 
   /* ---------- Home ---------- */

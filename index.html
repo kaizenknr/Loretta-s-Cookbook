@@ -230,7 +230,8 @@
     box-shadow:0 2px 3px rgba(0,0,0,.3), inset 0 1px 1px rgba(255,255,255,.4);
   }
   .notes .lbl{ display:block; color:var(--accent); font-weight:700; font-size:15px; margin-bottom:3px; letter-spacing:.02em }
-  .r-foot{ height:calc(var(--safe-bottom) + 120px) }
+  .r-foot{ height:calc(var(--safe-bottom) + 120px); text-align:center; padding-top:14px }
+  .r-foot .ver{ font-family:var(--body); font-size:11px; color:var(--muted); opacity:.6 }
 
   /* ---------- Timer tray ---------- */
   #tray{ position:fixed; left:0; right:0; bottom:0; z-index:40; padding:10px 14px calc(var(--safe-bottom) + 10px); display:flex; flex-direction:column; gap:8px; pointer-events:none }
@@ -566,7 +567,7 @@
       <div class="spacer"></div>
     </div>
     <div id="recipe-body"></div>
-    <div class="r-foot"></div>
+    <div class="r-foot"><span class="ver" id="ver2"></span></div>
   </div>
 </div>
 
@@ -1566,8 +1567,8 @@ function scheduleSplashHide(){
 }
 
 /* ---- init ---- */
-const APP_VERSION = 'v14';   // shown in the footer so you can confirm the app updated
-(()=>{ const el=$('#ver'); if(el) el.textContent = APP_VERSION; })();
+const APP_VERSION = 'v15';   // shown in the footer so you can confirm the app updated
+(()=>{ const a=$('#ver'), b=$('#ver2'); if(a) a.textContent = APP_VERSION; if(b) b.textContent = APP_VERSION; })();
 $('#search').addEventListener('input', renderGrid);
 cookInit();
 restoreTimers();

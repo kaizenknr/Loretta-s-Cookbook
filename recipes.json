@@ -43,14 +43,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: bacon — use unsalted / low-sodium, or less. Higher in phosphates: dairy, baking powder — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "2": "1½ t. baking powder → use phosphate-free (aluminum-free) baking powder",
-        "3": "1 t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "boiled-cabbage",
@@ -91,13 +84,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: ham — use unsalted / low-sodium, or less.",
-      "ingredients": {
-        "4": "½ t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "fried-okra",
@@ -122,13 +109,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap.",
-      "ingredients": {
-        "3": "1½ t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "boiled-squash",
@@ -162,13 +143,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap.",
-      "ingredients": {
-        "1": "salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "fried-green-tomatoes",
@@ -193,13 +168,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap.",
-      "ingredients": {
-        "2": "1 t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "potatoe-soup",
@@ -238,13 +207,7 @@
         "uses": []
       }
     ],
-    "notes": "Oleo is butter.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "2": "½ t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": "Oleo is butter."
   },
   {
     "id": "meat-loaf",
@@ -296,13 +259,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: Worcestershire — use unsalted / low-sodium, or less.",
-      "ingredients": {
-        "5": "1 t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "katherine-hepburn-brownies",
@@ -360,13 +317,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: nuts — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "7": "¼ t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "angel-frost-punch",
@@ -408,10 +359,7 @@
         ]
       }
     ],
-    "notes": "Makes 11 cups.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: dairy, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Makes 11 cups."
   },
   {
     "id": "oatmeal-cake",
@@ -465,10 +413,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: baking soda — use unsalted / low-sodium, or less. Higher in phosphates: oats — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "washday-cake",
@@ -503,13 +448,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, baking powder — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "3": "1½ t. baking powder → use phosphate-free (aluminum-free) baking powder"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "lemon-lush",
@@ -554,10 +493,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: cheese — use unsalted / low-sodium, or less. Higher in phosphates: cheese, dairy, nuts — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "beef-stroganoff",
@@ -592,13 +528,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "3": "1 t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "banana-nut-bread",
@@ -649,14 +579,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, nuts, baking powder — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "4": "3 t. baking powder → use phosphate-free (aluminum-free) baking powder",
-        "5": "½ t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "cream-cheese-frosting",
@@ -688,10 +611,7 @@
         ]
       }
     ],
-    "notes": "Enough for a 2-layer, 9-inch cake.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: cheese — use unsalted / low-sodium, or less. Higher in phosphates: cheese, dairy — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Enough for a 2-layer, 9-inch cake."
   },
   {
     "id": "black-forest-cake",
@@ -771,10 +691,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: dairy, chocolate, cocoa, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "impossible-tuna-cheese-pie",
@@ -833,10 +750,7 @@
         "uses": []
       }
     ],
-    "notes": "Yield: 6 servings.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes, cheese — use unsalted / low-sodium, or less. Higher in phosphates: cheese, dairy, nuts, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Yield: 6 servings."
   },
   {
     "id": "oven-fried-chicken",
@@ -885,13 +799,7 @@
         "uses": []
       }
     ],
-    "notes": "Yield: 6 servings.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap.",
-      "ingredients": {
-        "3": "¼ t. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": "Yield: 6 servings."
   },
   {
     "id": "vanilla-custard-pie-filling",
@@ -931,13 +839,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, nuts — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "2": "dash salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "buttermilk-biscuits",
@@ -986,14 +888,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: baking soda — use unsalted / low-sodium, or less. Higher in phosphates: dairy, baking powder — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "1": "3 tsp. baking powder → use phosphate-free (aluminum-free) baking powder",
-        "3": "1 tsp. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "sun-tea",
@@ -1025,10 +920,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: bran — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "chinese-rice",
@@ -1072,13 +964,7 @@
         ]
       }
     ],
-    "notes": "Makes 2 cups, or 3 servings.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: soy sauce — use unsalted / low-sodium, or less.",
-      "ingredients": {
-        "3": "4 t. soy sauce → use low-sodium soy sauce (and a bit less)"
-      }
-    }
+    "notes": "Makes 2 cups, or 3 servings."
   },
   {
     "id": "creamy-buttercream-frosting",
@@ -1107,10 +993,7 @@
         "uses": []
       }
     ],
-    "notes": "About 1 cup of frosting.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "About 1 cup of frosting."
   },
   {
     "id": "heavenly-heart-chocolate-cake",
@@ -1173,13 +1056,7 @@
         "uses": []
       }
     ],
-    "notes": "To sour milk: use 2 teaspoons vinegar plus milk to equal ¾ cup.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: baking soda — use unsalted / low-sodium, or less. Higher in phosphates: dairy, cocoa — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "8": "¼ teaspoon salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": "To sour milk: use 2 teaspoons vinegar plus milk to equal ¾ cup."
   },
   {
     "id": "glossy-chocolate-sour-cream-frosting",
@@ -1209,10 +1086,7 @@
         ]
       }
     ],
-    "notes": "About 2½ cups frosting.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, chocolate — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "About 2½ cups frosting."
   },
   {
     "id": "rocky-road-cookies",
@@ -1242,10 +1116,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, nuts, chocolate — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "impossible-pie",
@@ -1282,10 +1153,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, cocoa — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "fudge-topping",
@@ -1322,13 +1190,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, chocolate, bran — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "4": "pinch of salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "fluffy-frosting",
@@ -1357,10 +1219,7 @@
         "uses": []
       }
     ],
-    "notes": "Makes enough for a layer cake, but it must be stored in the fridge.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: dairy, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Makes enough for a layer cake, but it must be stored in the fridge."
   },
   {
     "id": "marie-callenders-cornbread",
@@ -1381,10 +1240,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "zucchini-bread",
@@ -1432,14 +1288,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: nuts, baking powder — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "6": "1 teasp. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium",
-        "8": "1 teasp. baking powder → use phosphate-free (aluminum-free) baking powder"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "banana-nut-bread-2",
@@ -1485,13 +1334,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: baking soda — use unsalted / low-sodium, or less. Higher in phosphates: nuts — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "1": "½ teaspoon salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "mexican-corn-bread",
@@ -1535,13 +1378,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: cheese — use unsalted / low-sodium, or less. Higher in phosphates: cheese, dairy — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "2": "1 teaspoon salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "pumpkin-nut-bread",
@@ -1585,13 +1422,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: nuts, baking powder — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "3": "2 teaspoon baking powder → use phosphate-free (aluminum-free) baking powder"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "spudnuts",
@@ -1630,13 +1461,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "2": "1 T. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "egg-salad",
@@ -1672,13 +1497,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: dairy, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "4": "¼ teasp. salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": ""
   },
   {
     "id": "carrot-cake",
@@ -1752,14 +1571,7 @@
         ]
       }
     ],
-    "notes": "Serves 10-12.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: cheese, baking soda — use unsalted / low-sodium, or less. Higher in phosphates: cheese, dairy, nuts, baking powder — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "6": "2 teaspoons baking powder → use phosphate-free (aluminum-free) baking powder",
-        "8": "1 teaspoon salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": "Serves 10-12."
   },
   {
     "id": "applesauce-cake",
@@ -1826,13 +1638,7 @@
         "uses": []
       }
     ],
-    "notes": "Serves 15.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: baking soda — use unsalted / low-sodium, or less. Higher in phosphates: nuts, cocoa — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "11": "1 teaspoon salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": "Serves 15."
   },
   {
     "id": "english-toffee",
@@ -1868,10 +1674,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: nuts, chocolate, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "sees-fudge",
@@ -1913,10 +1716,7 @@
         "uses": []
       }
     ],
-    "notes": "Makes 24 pieces.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, nuts, chocolate — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Makes 24 pieces."
   },
   {
     "id": "peanut-butter-cups",
@@ -1957,10 +1757,7 @@
         "uses": []
       }
     ],
-    "notes": "Makes 3 dozen.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: peanuts, chocolate — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Makes 3 dozen."
   },
   {
     "id": "cheesecake",
@@ -2012,10 +1809,7 @@
         ]
       }
     ],
-    "notes": "Serves approximately 30. Yields 2 8x8\" pans.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes, cheese — use unsalted / low-sodium, or less. Higher in phosphates: cheese, dairy, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Serves approximately 30. Yields 2 8x8\" pans."
   },
   {
     "id": "cake-with-strawberries",
@@ -2060,10 +1854,7 @@
         "uses": []
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: cheese — use unsalted / low-sodium, or less. Higher in phosphates: cheese, dairy — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "pina-colada-cake",
@@ -2141,10 +1932,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: dairy, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "banana-split-cake",
@@ -2198,10 +1986,7 @@
         "uses": []
       }
     ],
-    "notes": "Serves 4-6.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: nuts — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Serves 4-6."
   },
   {
     "id": "mississippi-mud-cake",
@@ -2269,10 +2054,7 @@
         ]
       }
     ],
-    "notes": "",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, nuts, cocoa — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": ""
   },
   {
     "id": "cherry-chocolate-top",
@@ -2316,13 +2098,7 @@
         "uses": []
       }
     ],
-    "notes": "Great on chocolate or devil's food cake baked in a brownie pan, cut in squares and left in the pan until serving. Makes enough for one cake.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: nuts, cocoa — limit these, and favor phosphate-free baking powder & fresh (not processed) foods.",
-      "ingredients": {
-        "2": "very light sprinkle salt → use a potassium salt substitute (e.g. Nu-Salt/Morton Lite), or herbs, pepper & lemon — cuts sodium, adds potassium"
-      }
-    }
+    "notes": "Great on chocolate or devil's food cake baked in a brownie pan, cut in squares and left in the pan until serving. Makes enough for one cake."
   },
   {
     "id": "oh-henry-bars",
@@ -2365,10 +2141,7 @@
         ]
       }
     ],
-    "notes": "Makes 12-16.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in sodium: packaged mixes — use unsalted / low-sodium, or less. Higher in phosphates: peanuts, chocolate, oats, packaged mixes — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Makes 12-16."
   },
   {
     "id": "truffles",
@@ -2403,9 +2176,6 @@
         "uses": []
       }
     ],
-    "notes": "Makes 4 dozen+.",
-    "kidneySafe": {
-      "note": "Keep sodium and phosphates low here. Potassium is fine — she wants more — so a potassium-based salt substitute is a good swap. Higher in phosphates: dairy, chocolate — limit these, and favor phosphate-free baking powder & fresh (not processed) foods."
-    }
+    "notes": "Makes 4 dozen+."
   }
 ]

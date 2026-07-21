@@ -47,25 +47,20 @@ commit, and redeploy. Each recipe:
 - `steps[].uses` → which ingredient indices that step uses, so they **cross off** as the
   cook advances. (Or just send Claude the recipe photos and it fills all of this in.)
 
-### Kidney-safe version
-Each recipe can carry an optional `kidneySafe` block. A toggle on the recipe page switches
-to this near-identical version (lower-sodium swaps + flags), and the choice is remembered.
-```jsonc
-"kidneySafe": {
-  "note": "Sodium and phosphates are the two to keep low here. Cut the added salt …",
-  "ingredients": { "3": "1 t. salt → reduce or leave out; season with herbs & pepper" },
-  "steps": { "2": "…optional replacement step text…" }
-}
-```
-- Keys in `ingredients`/`steps` are the **0-based index** of the line to replace, so
-  everything else (and the `uses` cross-off, timers, cooking mode) stays identical.
-- Only the listed lines change; changed lines show an **"adjusted"** tag.
-- Focused on the two she must keep low — **sodium and phosphates**: lower-salt swaps,
-  low-sodium soy sauce, phosphate-free baking powder, and flags on cured meats, dairy,
-  nuts, cola, whole grains and packaged mixes.
-- **These are general suggestions and ingredient flags, not medical advice.** The app shows
-  a note asking to confirm with her doctor / renal dietitian. Tailor the `kidneySafe` text
-  per her care team's guidance.
+### Kidney-friendly toggle (CKD)
+A toggle on each recipe page (above **Start Cooking**, and remembered across recipes) tags
+every ingredient by Mom's care-team food list — 🔴 avoid · 🟡 limit · 🟢 okay — and shows a
+green **swap** for each "avoid" item, keeping the recipe otherwise identical so it still
+tastes like Mom's. It also shows a **protein-portion** note.
+- The whole classifier lives in one place in `index.html`: the **`CKD_FOODS`** array
+  (`[match, rate, swap]`, ordered specific → general; first match wins). To change what's
+  avoided/limited/okay or a suggested swap, edit that list — it applies to every recipe
+  automatically, no per-recipe data needed.
+- Targets **low sodium & phosphate** and, per her list, **limits high-potassium foods**
+  (banana, potato, tomato, orange, spinach, dried fruit, etc.); `salt substitute` is on the
+  avoid list.
+- **General guidance, not medical advice** — the panel says to confirm with her doctor /
+  renal dietitian.
 
 ### Scheduling a "drop"
 Add two optional fields to any recipe to make it appear as a locked **teaser** until
@@ -86,8 +81,8 @@ push is set up (below), Mom gets a notification.
 - ⏱️ Timers with alarm + buzz; **progress and running timers persist** on the phone
 - 🔍 Search + category filters (Bread, Vegetable, Dessert, Main Dish, …)
 - 📴 Works fully offline once added to the Home Screen; 🌙 light + dark
-- 💚 **Kidney-safe toggle** — per-recipe switch to a near-identical, lower-sodium & phosphate version with
-  dietitian flags (general guidance, not medical advice)
+- 💚 **Kidney-friendly toggle** — tags every ingredient 🔴/🟡/🟢 from her CKD food list with
+  green swaps + a protein-portion note (general guidance, not medical advice)
 - ✨ **Scheduled drops** — new recipes appear as locked teasers and unlock at their `availableAt`
 - 🔔 **Push notifications** (optional server) — a ping when a recipe drops, and when a cooking
   timer finishes even if Mom has left the app

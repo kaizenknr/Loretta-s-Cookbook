@@ -371,18 +371,23 @@
     background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); transition:transform .2s ease;
   }
   .ks-toggle.on .ks-switch .knob{ transform:translateX(20px) }
-  .ks-note{
-    margin-top:11px; padding-top:11px; border-top:1px dashed var(--line);
-    font-size:13px; line-height:1.5; color:var(--ink-soft);
+  .ks-legend{ display:flex; gap:16px; margin-top:11px; padding-top:11px; border-top:1px dashed var(--line); font-size:12px; color:var(--ink-soft) }
+  .ks-legend span{ display:inline-flex; align-items:center; gap:5px }
+  .ks-note{ margin-top:9px; font-size:13px; line-height:1.5; color:var(--ink-soft) }
+  .ks-protein{ margin-top:9px; font-size:12.5px; line-height:1.5; color:var(--ink-soft); background:rgba(127,176,204,.12); border-radius:10px; padding:8px 11px }
+  .ks-disc{ margin-top:9px; font-size:11.5px; color:var(--muted); font-style:italic; line-height:1.45 }
+
+  /* red/yellow/green ingredient tags */
+  .ck-dot{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:8px; vertical-align:middle; flex:0 0 auto }
+  i.ck-dot{ margin-right:0 }
+  .ck-dot.ck-red{ background:#d24b3e } .ck-dot.ck-yellow{ background:#e0a52e } .ck-dot.ck-green{ background:#5aa64c }
+  .ck-swap{
+    display:block; margin:3px 0 0 17px; font-size:11.5px; font-weight:600;
+    color:#8a3a30; line-height:1.35;
   }
-  .ks-disc{ margin-top:7px; font-size:11.5px; color:var(--muted); font-style:italic; line-height:1.45 }
-  .ks-tag{
-    display:inline-block; margin-left:7px; font-size:10px; font-weight:700; letter-spacing:.3px;
-    text-transform:uppercase; color:#3f7a34; background:#e4f0df; border-radius:999px; padding:1px 7px;
-    vertical-align:middle;
-  }
-  .ings li.ks-adj, #cook-ings-list li.ks-adj{ background:rgba(107,171,91,.09); border-radius:10px }
-  .steps li.ks-adj{ box-shadow:inset 3px 0 0 #6bab5b; border-radius:10px }
+  .ck-swap::before{ content:"↦ " }
+  .ings li.ck-red, #cook-ings-list li.ck-red{ background:rgba(210,75,62,.07); border-radius:10px }
+  .ings li.ck-yellow, #cook-ings-list li.ck-yellow{ background:rgba(224,165,46,.10); border-radius:10px }
 
   /* ========== Premium motion ==========
      Advanced, GPU-friendly (transform/opacity only) touches:
@@ -801,13 +806,185 @@ function openRecipe(id, ev){
 }
 function goHome(){ location.hash = ''; }
 
-/* ---- Kidney-safe mode: shows an alternate, near-identical version of a recipe
-   with lower-sodium swaps and dietitian flags. Preference is sticky. ---- */
+/* ================= Kidney-friendly (CKD) mode =================
+   Driven by Mom's care-team food list (red = avoid, yellow = limit,
+   green = okay). When on, every ingredient is tagged by that list and
+   red items get a suggested green swap. Focus: low sodium & phosphate,
+   plus moderate protein. (Her list restricts high-potassium foods.)
+   Preference is sticky. ============================================ */
 let KIDNEY = (()=>{ try{ return localStorage.getItem('lc:kidney')==='1'; }catch(e){ return false; } })();
-function ingText(r,i){ const o = KIDNEY && r.kidneySafe && r.kidneySafe.ingredients; return (o && o[i]!=null) ? o[i] : r.ingredients[i]; }
-function ingChanged(r,i){ return !!(KIDNEY && r.kidneySafe && r.kidneySafe.ingredients && r.kidneySafe.ingredients[i]!=null); }
-function stepText(r,i){ const o = KIDNEY && r.kidneySafe && r.kidneySafe.steps; return (o && o[i]!=null) ? o[i] : r.steps[i].text; }
-function stepChanged(r,i){ return !!(KIDNEY && r.kidneySafe && r.kidneySafe.steps && r.kidneySafe.steps[i]!=null); }
+
+/* Ordered most-specific → most-general; first hit wins.
+   [match, rate, swap?]  rate: 'red' | 'yellow' | 'green' */
+const CKD_FOODS = [
+  // --- specific phrases first (so they win over the general word) ---
+  ['apple cider vinegar','red','rice or white vinegar'],
+  ['salt substitute','red',null],
+  ['salt pork','red','skinless turkey or a smoked-paprika pinch'],
+  ['unsalted','yellow',null],
+  ['seasoned salt','red','garlic & onion powder + herbs'],
+  ['garlic salt','red','garlic powder'],
+  ['onion salt','red','onion powder'],
+  ['celery salt','red','celery seed (salt-free)'],
+  ['baking soda','green',null],
+  ['baking powder','green',null],
+  ['cream of tartar','green',null],
+  ['cream of wheat','yellow',null],
+  ['ice cream','red',null],
+  ['sweet potato','red','white potato is also high — try turnip or cauliflower'],
+  ['potato chip','red','unsalted crackers'],
+  ['brown rice','red','white rice'],
+  ['whole grain','red','sourdough or white'],
+  ['whole wheat','red','white / sourdough'],
+  ['green tomato','yellow',null],
+  ['green bean','green',null],
+  ['green chil','green',null],
+  ['green onion','green',null],
+  ['bell pepper','green',null],
+  ['butter lettuce','green',null],
+  ['buttermilk','red','⅓ c. white vinegar or lemon in milk you can spare, or use less'],
+  ['nut butter','red','skip, or a thin scrape of unsalted butter'],
+  ['pinto bean','yellow',null],
+  ['corn syrup','yellow',null],
+  ['corn flake','green',null],
+  ['apple juice','yellow',null],
+  ['orange juice','red','a splash of lemon or pomegranate juice'],
+  ['tomato product','red','none canned — use fresh or roasted red bell pepper'],
+  ['canned soup','red','homemade, low-sodium'],
+  ['canned sauce','red','fresh / homemade'],
+  ['olive oil','green',null],
+  ['avocado oil','green',null],
+  ['canola oil','green',null],
+  ['sunflower oil','green',null],
+  ['flaxseed oil','green',null],
+  ['vegetable oil','red','olive, canola or avocado oil'],
+  ['soybean oil','red','olive, canola or avocado oil'],
+  ['palm oil','red','olive, canola or avocado oil'],
+  ['macadamia','yellow',null],
+  ['pancake syrup','red','a little honey'],
+  ['steak sauce','red',null],
+  ['soy sauce','red','rice vinegar + garlic & ginger'],
+  ['cold cut','red','fresh skinless poultry'],
+  ['corned beef','red','fresh skinless poultry'],
+  ['deli meat','red','fresh skinless poultry'],
+  ['bacon drippings','red','olive or canola oil'],
+  // --- general words ---
+  ['salt','red','herbs, pepper, lemon, garlic & onion powder'],
+  ['bacon','red','skinless turkey; smoked paprika for flavor'],
+  ['ham','red','skinless chicken or turkey'],
+  ['sausage','red','fresh skinless poultry'],
+  ['salami','red','fresh skinless poultry'],
+  ['pastrami','red','fresh skinless poultry'],
+  ['bologna','red','fresh skinless poultry'],
+  ['hot dog','red','fresh skinless poultry'],
+  ['pepperoni','red','fresh skinless poultry'],
+  ['beef','red','skinless chicken or turkey'],
+  ['steak','red','skinless chicken or turkey'],
+  ['pork','red','skinless chicken or turkey'],
+  ['cheddar','red','a little mozzarella'],
+  ['cottage cheese','red',null],
+  ['mozzarella','yellow',null],
+  ['parmesan','red','a little mozzarella'],
+  ['cheese','red','a small amount of mozzarella'],
+  ['yogurt','red',null],
+  ['margarine','red','olive/canola oil or unsalted butter'],
+  ['butter','yellow','use unsalted'],
+  ['milk','red','use less, or a non-dairy milk if OK'],
+  ['cream','red','use less'],
+  ['pickle','red',null],
+  ['sauerkraut','red',null],
+  ['olive','red',null],
+  ['caper','yellow',null],
+  ['ketchup','red','a little fresh tomato-free sauce'],
+  ['bbq','red',null],
+  ['barbecue','red',null],
+  ['teriyaki','red','rice vinegar + garlic & ginger'],
+  ['bouillon','red','low-sodium homemade stock'],
+  ['broth','red','low-sodium / homemade'],
+  ['gravy','red','a light homemade, low-sodium version'],
+  ['worcestershire','red',null],
+  ['tomato','red','roasted red bell pepper'],
+  ['potato','red','cauliflower'],
+  ['spinach','red','cabbage, lettuce or green beans'],
+  ['kale','red','cabbage or lettuce'],
+  ['broccoli','red','cauliflower or green beans'],
+  ['brussels sprout','yellow',null],
+  ['carrot','red','cabbage or bell pepper'],
+  ['beet green','red',null],
+  ['turnip green','red',null],
+  ['swiss chard','red',null],
+  ['bok choy','red','cabbage'],
+  ['mushroom','green',null],
+  ['avocado','red',null],
+  ['banana','red','apple, berries or grapes'],
+  ['mandarin','green',null],
+  ['orange juice','red','a splash of lemon or pomegranate juice'],
+  ['orange','red','apple, grapes or berries'],
+  ['dried fruit','red','fresh apple, grapes or berries'],
+  ['raisin','red','fresh grapes'],
+  ['date','red',null],
+  ['prune','red',null],
+  ['apricot','red',null],
+  ['mango','red','apple or pineapple'],
+  ['kiwi','red',null],
+  ['nectarine','red','peach or pear'],
+  ['nut','red','skip, or a few unsalted seeds if OK'],
+  ['seed','red',null],
+  ['peanut','red',null],
+  ['pecan','red',null],
+  ['walnut','red',null],
+  ['almond','red',null],
+  ['chocolate','red',null],
+  ['cocoa','red',null],
+  ['oat','red','white rice or grits'],
+  ['bran','red',null],
+  ['granola','red',null],
+  ['legume','red',null],
+  ['lentil','red',null],
+  ['chickpea','red',null],
+  ['bean','yellow',null],
+  ['pumpkin','yellow',null],
+  ['squash','red','zucchini'],
+  ['soda','red',null],
+  ['cola','red',null],
+  ['honey','yellow',null],
+  ['agave','yellow',null],
+  ['molasses','red','a little honey'],
+  ['sweetener','red','monk-fruit sweetener or stevia'],
+  ['balsamic','yellow',null],
+  ['vinegar','green',null],
+  // reassuring greens that show up in these recipes
+  ['egg','green',null],
+  ['chicken','green',null],
+  ['turkey','green',null],
+  ['onion','green',null],
+  ['garlic','green',null],
+  ['shallot','green',null],
+  ['cabbage','green',null],
+  ['cauliflower','green',null],
+  ['cucumber','green',null],
+  ['lettuce','green',null],
+  ['zucchini','green',null],
+  ['eggplant','green',null],
+  ['lemon','green',null],
+  ['apple','green',null],
+  ['berr','green',null],
+  ['grape','green',null],
+  ['pineapple','green',null],
+  ['rice','green',null],
+];
+/* Classify an ingredient by the FIRST match — the list is ordered specific →
+   general, so "olive oil"(ok) wins over "olive"(avoid) and "unsalted"(limit)
+   wins over "salt"(avoid). */
+function classifyIng(text){
+  const low = ' ' + String(text).toLowerCase() + ' ';
+  for(const [kw, rate, swap] of CKD_FOODS){
+    if(low.includes(kw)) return { rate, swap: swap||null, kw };
+  }
+  return null;
+}
+const CKD_LABEL = { red:'avoid', yellow:'limit', green:'ok' };
+
 function toggleKidney(){
   KIDNEY = !KIDNEY;
   try{ localStorage.setItem('lc:kidney', KIDNEY?'1':'0'); }catch(e){}
@@ -819,24 +996,28 @@ function renderRecipe(r){
   const prog = loadProg(r.id);
   $('#t-title').textContent = r.title;
 
+  let redCount = 0;
   const ings = r.ingredients.map((ing,i)=>{
-    const adj = ingChanged(r,i);
+    const cls = KIDNEY ? classifyIng(ing) : null;
+    if(cls && cls.rate==='red') redCount++;
+    const dot = cls ? `<span class="ck-dot ck-${cls.rate}" title="${CKD_LABEL[cls.rate]}"></span>` : '';
+    const swap = (cls && cls.rate==='red' && cls.swap)
+      ? `<span class="ck-swap">try ${esc(cls.swap)}</span>` : '';
     return `
-    <li class="${prog.ing[i]?'done':''} ${adj?'ks-adj':''}" onclick="toggleIng(${i})">
+    <li class="${prog.ing[i]?'done':''} ${cls?('ck-'+cls.rate):''}" onclick="toggleIng(${i})">
       <span class="check">${checkSVG()}</span>
-      <span class="txt">${esc(ingText(r,i))}${adj?'<span class="ks-tag">adjusted</span>':''}</span>
+      <span class="txt">${dot}${esc(ing)}${swap}</span>
     </li>`;
   }).join('');
 
   const steps = r.steps.map((s,i)=>{
-    const adj = stepChanged(r,i);
     const t = s.timer ? `<button class="timer-btn" id="tbtn-${i}" onclick="event.stopPropagation();startStepTimer(${i})">${clockSVG()} Start ${s.timer} min${s.timerLabel?' · '+esc(s.timerLabel):''}</button>` : '';
     return `
-    <li class="step ${prog.step[i]?'done':''} ${adj?'ks-adj':''}" id="step-${i}">
+    <li class="step ${prog.step[i]?'done':''}" id="step-${i}">
       <div class="sidx">${i+1}</div>
       <div class="sbody">
         <div class="step-top">
-          <p class="stext">${esc(stepText(r,i))}${adj?'<span class="ks-tag">adjusted</span>':''}</p>
+          <p class="stext">${esc(s.text)}</p>
           <span class="check" onclick="toggleStep(${i})">${checkSVG()}</span>
         </div>
         ${t}
@@ -849,13 +1030,18 @@ function renderRecipe(r){
       <div class="ks-row">
         <span class="ks-ic">💚</span>
         <div class="ks-labels">
-          <b>Kidney-safe version</b>
-          <small>${KIDNEY ? 'Low sodium &amp; phosphate · potassium OK' : 'Adjust this recipe for her kidney diet'}</small>
+          <b>Kidney-friendly</b>
+          <small>${KIDNEY ? 'Tagged for her CKD diet' : 'Adjust this recipe for her kidney diet'}</small>
         </div>
-        <button class="ks-switch" role="switch" aria-checked="${KIDNEY}" aria-label="Kidney-safe version" onclick="toggleKidney()"><span class="knob"></span></button>
+        <button class="ks-switch" role="switch" aria-checked="${KIDNEY}" aria-label="Kidney-friendly version" onclick="toggleKidney()"><span class="knob"></span></button>
       </div>
-      ${KIDNEY ? `<div class="ks-note">${r.kidneySafe ? esc(r.kidneySafe.note) : 'No kidney-safe swaps are set for this recipe yet.'}</div>
-      <div class="ks-disc">Tuned to keep sodium &amp; phosphate low; potassium is intentionally <b>not</b> limited. General guidance — please confirm with her doctor or renal dietitian.</div>` : ''}
+      ${KIDNEY ? `
+      <div class="ks-legend"><span><i class="ck-dot ck-red"></i>avoid</span><span><i class="ck-dot ck-yellow"></i>limit</span><span><i class="ck-dot ck-green"></i>okay</span></div>
+      <div class="ks-note">${redCount
+          ? `Each ingredient is marked below. The ${redCount} “avoid” item${redCount>1?'s':''} show a lighter-kidney swap — keep everything else the same so it still tastes like Mom's.`
+          : `Everything here looks kidney-friendly. Still go easy on added salt.`}</div>
+      <div class="ks-protein">🍗 <b>Protein:</b> keep the portion moderate — about a palm-size serving — and lean on skinless chicken or turkey and egg whites, unless her dietitian says otherwise.</div>
+      <div class="ks-disc">Based on her red/yellow/green food list — low sodium &amp; phosphate (and, per that list, limiting high-potassium foods). General guidance, <b>not</b> medical advice — please confirm with her doctor or renal dietitian.</div>` : ''}
     </div>`;
 
   $('#recipe-body').innerHTML = `
@@ -914,8 +1100,12 @@ function syncIngredientDom(p){
 function renderCookIngs(){
   const r=currentRecipe; if(!r) return;
   const p=loadProg(r.id);
-  $('#cook-ings-list').innerHTML = r.ingredients.map((x,idx)=>
-    `<li class="${p.ing[idx]?'done':''} ${ingChanged(r,idx)?'ks-adj':''}">${esc(ingText(r,idx))}</li>`).join('');
+  $('#cook-ings-list').innerHTML = r.ingredients.map((x,idx)=>{
+    const cls = KIDNEY ? classifyIng(x) : null;
+    const dot = cls ? `<span class="ck-dot ck-${cls.rate}"></span>` : '';
+    const swap = (cls && cls.rate==='red' && cls.swap) ? ` <span class="ck-swap">try ${esc(cls.swap)}</span>` : '';
+    return `<li class="${p.ing[idx]?'done':''} ${cls?('ck-'+cls.rate):''}">${dot}${esc(x)}${swap}</li>`;
+  }).join('');
 }
 
 /* ---- timers ---- */
@@ -1255,7 +1445,7 @@ function renderCook(){
   body.innerHTML=`
     <div class="cook-step">
       <div class="cook-num">${cookIdx+1}</div>
-      <p class="cook-text">${esc(stepText(r,cookIdx))}</p>
+      <p class="cook-text">${esc(s.text)}</p>
       ${s.timer?`<div class="cook-timer" id="cook-timer"></div>`:''}
     </div>`;
   syncCookTimer();

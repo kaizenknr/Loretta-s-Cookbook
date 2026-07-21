@@ -56,9 +56,10 @@ tastes like Mom's. It also shows a **protein-portion** note.
   (`[match, rate, swap]`, ordered specific → general; first match wins). To change what's
   avoided/limited/okay or a suggested swap, edit that list — it applies to every recipe
   automatically, no per-recipe data needed.
-- Targets **low sodium & phosphate** and, per her list, **limits high-potassium foods**
-  (banana, potato, tomato, orange, spinach, dried fruit, etc.); `salt substitute` is on the
-  avoid list.
+- Targets **low sodium & phosphate only**. **Potassium is not limited** (her body doesn't
+  retain it), so high-potassium foods — banana, potato, tomato, orange, spinach, avocado,
+  dried fruit — are okay, and a **potassium salt substitute** (Nu-Salt) is a recommended
+  salt swap.
 - **General guidance, not medical advice** — the panel says to confirm with her doctor /
   renal dietitian.
 

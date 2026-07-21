@@ -850,12 +850,12 @@ function renderRecipe(r){
         <span class="ks-ic">💚</span>
         <div class="ks-labels">
           <b>Kidney-safe version</b>
-          <small>${KIDNEY ? 'Lower sodium &amp; phosphate' : 'Adjust this recipe for her kidney diet'}</small>
+          <small>${KIDNEY ? 'Low sodium &amp; phosphate · potassium OK' : 'Adjust this recipe for her kidney diet'}</small>
         </div>
         <button class="ks-switch" role="switch" aria-checked="${KIDNEY}" aria-label="Kidney-safe version" onclick="toggleKidney()"><span class="knob"></span></button>
       </div>
       ${KIDNEY ? `<div class="ks-note">${r.kidneySafe ? esc(r.kidneySafe.note) : 'No kidney-safe swaps are set for this recipe yet.'}</div>
-      <div class="ks-disc">General suggestions to make this gentler on her kidneys — please confirm with her doctor or renal dietitian.</div>` : ''}
+      <div class="ks-disc">Tuned to keep sodium &amp; phosphate low; potassium is intentionally <b>not</b> limited. General guidance — please confirm with her doctor or renal dietitian.</div>` : ''}
     </div>`;
 
   $('#recipe-body').innerHTML = `

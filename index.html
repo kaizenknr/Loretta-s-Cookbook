@@ -371,23 +371,17 @@
     background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); transition:transform .2s ease;
   }
   .ks-toggle.on .ks-switch .knob{ transform:translateX(20px) }
-  .ks-legend{ display:flex; gap:16px; margin-top:11px; padding-top:11px; border-top:1px dashed var(--line); font-size:12px; color:var(--ink-soft) }
-  .ks-legend span{ display:inline-flex; align-items:center; gap:5px }
-  .ks-note{ margin-top:9px; font-size:13px; line-height:1.5; color:var(--ink-soft) }
-  .ks-protein{ margin-top:9px; font-size:12.5px; line-height:1.5; color:var(--ink-soft); background:rgba(127,176,204,.12); border-radius:10px; padding:8px 11px }
+  /* modifications result */
+  .ks-modhead{ margin-top:11px; padding-top:11px; border-top:1px dashed var(--line); font-size:12.5px; font-weight:700; color:var(--ink) }
+  .ks-mods{ list-style:none; margin:7px 0 0; padding:0 }
+  .ks-mods li{ padding:8px 0; border-bottom:1px dotted var(--line); font-size:13px; line-height:1.45 }
+  .ks-mods li:last-child{ border-bottom:none }
+  .ks-food{ font-weight:700; color:var(--ink) }
+  .ks-change{ color:var(--accent-deep) }
+  .ks-change::before{ content:"↦ " }
+  .ks-none{ margin-top:11px; padding-top:11px; border-top:1px dashed var(--line); font-size:14px; color:#3f7a34; font-weight:600 }
+  .ks-protein{ margin-top:10px; font-size:12.5px; line-height:1.5; color:var(--ink-soft); background:rgba(127,176,204,.12); border-radius:10px; padding:8px 11px }
   .ks-disc{ margin-top:9px; font-size:11.5px; color:var(--muted); font-style:italic; line-height:1.45 }
-
-  /* red/yellow/green ingredient tags */
-  .ck-dot{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:8px; vertical-align:middle; flex:0 0 auto }
-  i.ck-dot{ margin-right:0 }
-  .ck-dot.ck-red{ background:#d24b3e } .ck-dot.ck-yellow{ background:#e0a52e } .ck-dot.ck-green{ background:#5aa64c }
-  .ck-swap{
-    display:block; margin:3px 0 0 17px; font-size:11.5px; font-weight:600;
-    color:#8a3a30; line-height:1.35;
-  }
-  .ck-swap::before{ content:"↦ " }
-  .ings li.ck-red, #cook-ings-list li.ck-red{ background:rgba(210,75,62,.07); border-radius:10px }
-  .ings li.ck-yellow, #cook-ings-list li.ck-yellow{ background:rgba(224,165,46,.10); border-radius:10px }
 
   /* ========== Premium motion ==========
      Advanced, GPU-friendly (transform/opacity only) touches:
@@ -703,6 +697,8 @@ function enterRecipeContent(){
 /* ---- progress persistence ---- */
 function loadProg(id){ try{ return JSON.parse(localStorage.getItem('lc:prog:'+id)) || {ing:{},step:{}}; }catch(e){ return {ing:{},step:{}}; } }
 function saveProg(id, p){ try{ localStorage.setItem('lc:prog:'+id, JSON.stringify(p)); }catch(e){} }
+/* Wipe a recipe's checkmarks so it opens fresh next time (used once it's completed). */
+function resetProgress(id){ try{ localStorage.removeItem('lc:prog:'+id); }catch(e){} }
 
 /* ---- home ---- */
 let activeCat = 'All';
@@ -983,7 +979,6 @@ function classifyIng(text){
   }
   return null;
 }
-const CKD_LABEL = { red:'avoid', yellow:'limit', green:'ok' };
 
 function toggleKidney(){
   KIDNEY = !KIDNEY;
@@ -996,19 +991,21 @@ function renderRecipe(r){
   const prog = loadProg(r.id);
   $('#t-title').textContent = r.title;
 
-  let redCount = 0;
-  const ings = r.ingredients.map((ing,i)=>{
-    const cls = KIDNEY ? classifyIng(ing) : null;
-    if(cls && cls.rate==='red') redCount++;
-    const dot = cls ? `<span class="ck-dot ck-${cls.rate}" title="${CKD_LABEL[cls.rate]}"></span>` : '';
-    const swap = (cls && cls.rate==='red' && cls.swap)
-      ? `<span class="ck-swap">try ${esc(cls.swap)}</span>` : '';
-    return `
-    <li class="${prog.ing[i]?'done':''} ${cls?('ck-'+cls.rate):''}" onclick="toggleIng(${i})">
+  const ings = r.ingredients.map((ing,i)=>`
+    <li class="${prog.ing[i]?'done':''}" onclick="toggleIng(${i})">
       <span class="check">${checkSVG()}</span>
-      <span class="txt">${dot}${esc(ing)}${swap}</span>
-    </li>`;
-  }).join('');
+      <span class="txt">${esc(ing)}</span>
+    </li>`).join('');
+
+  // Kidney-diet result for this recipe: the changes to make, or "no changes needed".
+  const mods = KIDNEY ? r.ingredients
+      .map(ing => ({ ing, c: classifyIng(ing) }))
+      .filter(x => x.c && (x.c.rate==='red' || x.c.rate==='yellow'))
+      .map(x => {
+        const change = x.c.rate==='yellow' ? 'limit'
+          : (x.c.swap ? 'use ' + x.c.swap : 'avoid / leave out');
+        return `<li><span class="ks-food">${esc(x.ing)}</span> <span class="ks-change">${esc(change)}</span></li>`;
+      }) : [];
 
   const steps = r.steps.map((s,i)=>{
     const t = s.timer ? `<button class="timer-btn" id="tbtn-${i}" onclick="event.stopPropagation();startStepTimer(${i})">${clockSVG()} Start ${s.timer} min${s.timerLabel?' · '+esc(s.timerLabel):''}</button>` : '';
@@ -1031,17 +1028,16 @@ function renderRecipe(r){
         <span class="ks-ic">💚</span>
         <div class="ks-labels">
           <b>Kidney-friendly</b>
-          <small>${KIDNEY ? 'Tagged for her CKD diet' : 'Adjust this recipe for her kidney diet'}</small>
+          <small>${KIDNEY ? (mods.length ? mods.length+' change'+(mods.length>1?'s':'')+' for her diet' : 'No changes needed') : 'Adjust this recipe for her kidney diet'}</small>
         </div>
         <button class="ks-switch" role="switch" aria-checked="${KIDNEY}" aria-label="Kidney-friendly version" onclick="toggleKidney()"><span class="knob"></span></button>
       </div>
       ${KIDNEY ? `
-      <div class="ks-legend"><span><i class="ck-dot ck-red"></i>avoid</span><span><i class="ck-dot ck-yellow"></i>limit</span><span><i class="ck-dot ck-green"></i>okay</span></div>
-      <div class="ks-note">${redCount
-          ? `Each ingredient is marked below. The ${redCount} “avoid” item${redCount>1?'s':''} show a lighter-kidney swap — keep everything else the same so it still tastes like Mom's.`
-          : `Everything here looks kidney-friendly. Still go easy on added salt.`}</div>
+      ${mods.length
+        ? `<div class="ks-modhead">Changes for her kidney diet</div><ul class="ks-mods">${mods.join('')}</ul>`
+        : `<div class="ks-none">✓ No changes needed — this one's already kidney-friendly.</div>`}
       <div class="ks-protein">🍗 <b>Protein:</b> keep the portion moderate — about a palm-size serving — and lean on skinless chicken or turkey and egg whites, unless her dietitian says otherwise.</div>
-      <div class="ks-disc">Based on her red/yellow/green food list — low sodium &amp; phosphate (and, per that list, limiting high-potassium foods). General guidance, <b>not</b> medical advice — please confirm with her doctor or renal dietitian.</div>` : ''}
+      <div class="ks-disc">Based on her care-team food list — low sodium &amp; phosphate, and (per that list) limiting high-potassium foods. General guidance, <b>not</b> medical advice — please confirm with her doctor or renal dietitian.</div>` : ''}
     </div>`;
 
   $('#recipe-body').innerHTML = `
@@ -1100,12 +1096,8 @@ function syncIngredientDom(p){
 function renderCookIngs(){
   const r=currentRecipe; if(!r) return;
   const p=loadProg(r.id);
-  $('#cook-ings-list').innerHTML = r.ingredients.map((x,idx)=>{
-    const cls = KIDNEY ? classifyIng(x) : null;
-    const dot = cls ? `<span class="ck-dot ck-${cls.rate}"></span>` : '';
-    const swap = (cls && cls.rate==='red' && cls.swap) ? ` <span class="ck-swap">try ${esc(cls.swap)}</span>` : '';
-    return `<li class="${p.ing[idx]?'done':''} ${cls?('ck-'+cls.rate):''}">${dot}${esc(x)}${swap}</li>`;
-  }).join('');
+  $('#cook-ings-list').innerHTML = r.ingredients.map((x,idx)=>
+    `<li class="${p.ing[idx]?'done':''}">${esc(x)}</li>`).join('');
 }
 
 /* ---- timers ---- */
@@ -1421,6 +1413,7 @@ function renderCook(){
   const r=currentRecipe; if(!r) return;
   const n=r.steps.length, body=$('#cook-body');
   if(cookIdx>=n){
+    resetProgress(r.id);   // completed → clear checkmarks so it returns to its original state
     $('#cook-count').textContent='Finished';
     $('#cook-progress-fill').style.width='100%';
     $('#cook-nav').style.display='none';

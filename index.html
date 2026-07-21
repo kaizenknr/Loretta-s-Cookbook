@@ -130,6 +130,7 @@
 
   .empty{ padding:56px 30px; text-align:center; color:var(--muted); font-family:var(--serif); font-style:italic }
   .home-foot{ padding:8px 24px calc(var(--safe-bottom) + 30px); text-align:center; color:var(--muted); font-family:var(--hand); font-size:16px }
+  .home-foot .ver{ display:block; margin-top:4px; font-family:var(--body); font-size:11px; opacity:.6 }
 
   /* ---------- Recipe ---------- */
   .topbar{
@@ -551,7 +552,7 @@
       <div class="grid" id="soon-grid"></div>
     </div>
     <div class="grid" id="grid"></div>
-    <div class="home-foot">Made for Mom &#9829;</div>
+    <div class="home-foot">Made for Mom &#9829;<span class="ver" id="ver"></span></div>
   </div>
 
   <!-- RECIPE -->
@@ -1554,6 +1555,8 @@ function scheduleSplashHide(){
 }
 
 /* ---- init ---- */
+const APP_VERSION = 'v13';   // shown in the footer so you can confirm the app updated
+(()=>{ const el=$('#ver'); if(el) el.textContent = APP_VERSION; })();
 $('#search').addEventListener('input', renderGrid);
 cookInit();
 restoreTimers();

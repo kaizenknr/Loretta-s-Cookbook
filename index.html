@@ -552,7 +552,7 @@
       <div class="grid" id="soon-grid"></div>
     </div>
     <div class="grid" id="grid"></div>
-    <div class="home-foot">Made for Mom &#9829;<span class="ver" id="ver"></span></div>
+    <div class="home-foot">Made just for you, Mom &#9829;<span class="ver" id="ver"></span></div>
   </div>
 
   <!-- RECIPE -->
@@ -993,16 +993,16 @@ function renderRecipe(r){
         <span class="ks-ic">💚</span>
         <div class="ks-labels">
           <b>Kidney-friendly</b>
-          <small>${KIDNEY ? (mods.length ? mods.length+' change'+(mods.length>1?'s':'')+' for her diet' : 'No changes needed') : 'Adjust this recipe for her kidney diet'}</small>
+          <small>${KIDNEY ? (mods.length ? mods.length+' change'+(mods.length>1?'s':'')+' for your diet' : 'No changes needed') : 'Adjust this recipe for your kidney diet'}</small>
         </div>
         <button class="ks-switch" role="switch" aria-checked="${KIDNEY}" aria-label="Kidney-friendly version" onclick="toggleKidney()"><span class="knob"></span></button>
       </div>
       ${KIDNEY ? `
       ${mods.length
-        ? `<div class="ks-modhead">Changes for her kidney diet</div><ul class="ks-mods">${mods.join('')}</ul>`
+        ? `<div class="ks-modhead">Changes for your kidney diet</div><ul class="ks-mods">${mods.join('')}</ul>`
         : `<div class="ks-none">✓ No changes needed — this one's already kidney-friendly.</div>`}
-      <div class="ks-protein">🍗 <b>Protein:</b> keep the portion moderate — about a palm-size serving — and lean on skinless chicken or turkey and egg whites, unless her dietitian says otherwise.</div>
-      <div class="ks-disc">Keeps <b>sodium &amp; phosphate</b> low. Potassium is <b>not</b> limited — her body doesn't retain it, so high-potassium foods are fine. General guidance, not medical advice — please confirm with her doctor or renal dietitian.</div>` : ''}
+      <div class="ks-protein">🍗 <b>Protein:</b> keep your portion moderate — about a palm-size serving — and lean on skinless chicken or turkey and egg whites, unless your dietitian says otherwise.</div>
+      <div class="ks-disc">Keeps <b>sodium &amp; phosphate</b> low. Potassium is <b>not</b> limited — your body doesn't retain it, so high-potassium foods are fine. General guidance, not medical advice — please check with your doctor or renal dietitian.</div>` : ''}
     </div>`;
 
   $('#recipe-body').innerHTML = `
@@ -1339,6 +1339,7 @@ function fireAlarm(t){
 let cookOpen=false, cookIdx=0, cookTouchX=null;
 function enterCook(){
   if(!currentRecipe) return;
+  cookStartedForOpen = true;   // starting to cook → keep the checkmarks on leave
   ensureAudio();
   const p = loadProg(currentRecipe.id);
   const start = currentRecipe.steps.findIndex((s,i)=>!p.step[i]);
@@ -1468,12 +1469,21 @@ document.addEventListener('visibilitychange', ()=>{
 });
 
 /* ---- routing ---- */
+/* Which recipe the recipe page is showing, and whether cooking mode was started
+   for it. Leaving a recipe without starting cooking wipes its checkmarks. */
+let openRecipeId = null;
+let cookStartedForOpen = false;
+function leaveOpenRecipe(){
+  if(openRecipeId && !cookStartedForOpen) resetProgress(openRecipeId);
+  openRecipeId = null; cookStartedForOpen = false;
+}
 function route(){
   const h = location.hash;
   const m = h.match(/^#\/r\/(.+)$/);
   if(m){
     const r = RECIPES.find(x=>x.id===decodeURIComponent(m[1]));
     if(r && isAvailable(r)){
+      if(openRecipeId !== r.id){ leaveOpenRecipe(); openRecipeId = r.id; cookStartedForOpen = false; }
       renderRecipe(r);
       $('#view-home').classList.remove('active');
       $('#view-recipe').classList.add('active');
@@ -1485,6 +1495,7 @@ function route(){
     }
   }
   // home
+  leaveOpenRecipe();   // reset the recipe's checkmarks if she never started cooking
   $('#view-recipe').classList.remove('active');
   $('#view-home').classList.add('active');
   currentRecipe = null;
@@ -1555,7 +1566,7 @@ function scheduleSplashHide(){
 }
 
 /* ---- init ---- */
-const APP_VERSION = 'v13';   // shown in the footer so you can confirm the app updated
+const APP_VERSION = 'v14';   // shown in the footer so you can confirm the app updated
 (()=>{ const el=$('#ver'); if(el) el.textContent = APP_VERSION; })();
 $('#search').addEventListener('input', renderGrid);
 cookInit();

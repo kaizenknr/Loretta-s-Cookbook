@@ -233,6 +233,30 @@
   .r-foot{ height:calc(var(--safe-bottom) + 120px); text-align:center; padding-top:14px }
   .r-foot .ver{ font-family:var(--body); font-size:11px; color:var(--muted); opacity:.6 }
 
+  /* ---------- Notes & Revisions ---------- */
+  .rev-sec .revs{ list-style:none; margin:6px 0 14px; padding:0 }
+  .rev{ position:relative; padding:11px 0 12px 16px; border-bottom:1px dotted var(--line) }
+  .rev:last-child{ border-bottom:none }
+  .rev::before{ content:""; position:absolute; left:0; top:15px; width:7px; height:7px; border-radius:50%; background:var(--accent) }
+  .rev-head{ display:flex; align-items:center; gap:8px; margin-bottom:3px }
+  .rev-date{ font-size:12px; font-weight:700; color:var(--ink) }
+  .rev-tag{ font-size:10px; font-weight:700; letter-spacing:.3px; text-transform:uppercase; color:var(--blue-ink); background:var(--blue-soft); border-radius:999px; padding:1px 8px }
+  .rev-del{ margin-left:auto; color:var(--muted); font-size:15px; line-height:1; padding:2px 4px }
+  .rev-text{ font-size:14px; line-height:1.5; color:var(--ink-soft); white-space:pre-wrap }
+  .rev-empty{ color:var(--muted); font-style:italic; font-size:13.5px; margin:4px 0 12px }
+  .rev-add{ display:flex; flex-direction:column; gap:9px }
+  .rev-add textarea{
+    width:100%; resize:vertical; min-height:44px; padding:11px 13px; border-radius:12px;
+    border:1.6px solid var(--line); background:var(--card); color:var(--ink);
+    font-family:var(--body); font-size:15px; outline:none;
+  }
+  .rev-add textarea:focus{ border-color:var(--blue-solid) }
+  .rev-save{
+    align-self:flex-start; background:var(--accent); color:#fff; font-weight:700; font-size:14.5px;
+    padding:10px 18px; border-radius:12px; box-shadow:var(--shadow); transition:transform .16s ease;
+  }
+  .rev-save:active{ transform:scale(.97) }
+
   /* ---------- Timer tray ---------- */
   #tray{ position:fixed; left:0; right:0; bottom:0; z-index:40; padding:10px 14px calc(var(--safe-bottom) + 10px); display:flex; flex-direction:column; gap:8px; pointer-events:none }
   .tmr{
@@ -952,6 +976,50 @@ function toggleKidney(){
   if(currentRecipe){ renderRecipe(currentRecipe); if(cookOpen){ renderCook(); renderCookIngs(); } }
 }
 
+/* ---- Notes & Revisions: a dated log of edits per recipe.
+   Recipe-file `revisions` are permanent logged edits; anything you add in the
+   app is saved on this device (localStorage) with today's date. The original
+   recipe is never changed. ---- */
+function loadNotes(id){ try{ return JSON.parse(localStorage.getItem('lc:notes:'+id)) || []; }catch(e){ return []; } }
+function saveNotes(id, arr){ try{ localStorage.setItem('lc:notes:'+id, JSON.stringify(arr)); }catch(e){} }
+function todayISO(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function fmtNoteDate(iso){ const t=Date.parse(iso); return isNaN(t) ? String(iso) : new Date(t).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}); }
+function revisionsSection(r){
+  const baked = (r.revisions||[]).map(x=>({ date:x.date, text:x.text, src:'book' }));
+  const mine  = loadNotes(r.id).map(x=>({ date:x.date, text:x.text, ts:x.ts, src:'me' }));
+  const all = baked.concat(mine).sort((a,b)=> (Date.parse(b.date)||0) - (Date.parse(a.date)||0));
+  const items = all.map(e=>`
+    <li class="rev">
+      <div class="rev-head">
+        <span class="rev-date">${esc(fmtNoteDate(e.date))}</span>
+        ${e.src==='book' ? '<span class="rev-tag">logged edit</span>' : ''}
+        ${e.src==='me' ? `<button class="rev-del" onclick="deleteNote('${r.id}',${e.ts})" aria-label="Delete note">&#10005;</button>` : ''}
+      </div>
+      <div class="rev-text">${esc(e.text)}</div>
+    </li>`).join('');
+  return `
+    <div class="section rev-sec">
+      <h2><span class="num">✎</span> Notes &amp; Revisions</h2>
+      <p class="sub">Your edits, logged with the date. The original recipe stays as it is.</p>
+      ${all.length ? `<ul class="revs">${items}</ul>` : `<p class="rev-empty">No notes yet — add your first change below.</p>`}
+      <div class="rev-add">
+        <textarea id="rev-input" rows="2" placeholder="Add a note or change…"></textarea>
+        <button class="rev-save" onclick="addNote('${r.id}')">Save note</button>
+      </div>
+    </div>`;
+}
+function addNote(id){
+  const ta=$('#rev-input'); if(!ta) return;
+  const text=(ta.value||'').trim(); if(!text) return;
+  const arr=loadNotes(id); arr.push({ text, date: todayISO(), ts: Date.now() });
+  saveNotes(id, arr);
+  if(currentRecipe && currentRecipe.id===id){ renderRecipe(currentRecipe); }
+}
+function deleteNote(id, ts){
+  saveNotes(id, loadNotes(id).filter(x=>x.ts!==ts));
+  if(currentRecipe && currentRecipe.id===id){ renderRecipe(currentRecipe); }
+}
+
 function renderRecipe(r){
   currentRecipe = r;
   const prog = loadProg(r.id);
@@ -1034,6 +1102,7 @@ function renderRecipe(r){
       <ul class="steps">${steps}</ul>
     </div>
     ${r.notes?`<div class="notes"><span class="lbl">Loretta's note</span><span>${esc(r.notes)}</span></div>`:''}
+    ${revisionsSection(r)}
   `;
   refreshTimerButtons();
   requestWake();
@@ -1567,7 +1636,7 @@ function scheduleSplashHide(){
 }
 
 /* ---- init ---- */
-const APP_VERSION = 'v15';   // shown in the footer so you can confirm the app updated
+const APP_VERSION = 'v16';   // shown in the footer so you can confirm the app updated
 (()=>{ const a=$('#ver'), b=$('#ver2'); if(a) a.textContent = APP_VERSION; if(b) b.textContent = APP_VERSION; })();
 $('#search').addEventListener('input', renderGrid);
 cookInit();

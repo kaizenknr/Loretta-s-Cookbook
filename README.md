@@ -63,6 +63,18 @@ tastes like Mom's. It also shows a **protein-portion** note.
 - **General guidance, not medical advice** — the panel says to confirm with her doctor /
   renal dietitian.
 
+### Notes & Revisions
+Each recipe has a **Notes & Revisions** section (a dated edit log). The original recipe is
+never changed — revisions are logged separately.
+- Permanent, committed edits go in an optional `revisions` array on the recipe:
+  ```jsonc
+  "revisions": [
+    { "date": "2026-07-22", "text": "Cook time changed to 1 hour–1½ hours. Add 2 cups chicken broth." }
+  ]
+  ```
+- Notes she adds **in the app** are saved on her device (localStorage, stamped with the day's
+  date) and can be deleted; committed `revisions` show a "logged edit" tag and stay put.
+
 ### Scheduling a "drop"
 Add two optional fields to any recipe to make it appear as a locked **teaser** until
 its time arrives, then unlock automatically:

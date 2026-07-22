@@ -5,7 +5,7 @@
    - recipes.json: network-first (new drops appear), cached as fallback.
    - icons/splash: cache-first (they rarely change; CACHE_VERSION busts them).
    The page also auto-activates a new worker and reloads (see index.html). */
-const CACHE_VERSION = 'lc-v15';
+const CACHE_VERSION = 'lc-v16';
 const SHELL = [
   './',
   './index.html',

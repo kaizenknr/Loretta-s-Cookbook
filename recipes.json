@@ -84,7 +84,13 @@
         "uses": []
       }
     ],
-    "notes": ""
+    "notes": "",
+    "revisions": [
+      {
+        "date": "2026-07-22",
+        "text": "Cook time changed to 1 hour–1½ hours. Add 2 cups chicken broth."
+      }
+    ]
   },
   {
     "id": "fried-okra",
